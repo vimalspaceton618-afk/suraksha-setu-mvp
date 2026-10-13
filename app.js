@@ -119,14 +119,12 @@ function renderHome() {
       </div>
     </section>
     <section class="section" aria-labelledby="quick-actions">
-      <div class="section-head"><div><p class="eyebrow">01 / QUICK ACTIONS</p><h2 id="quick-actions">How can we help you stay safe?</h2><p>Choose a tool. Text checks run in this browser.</p></div></div>
-      <div class="grid grid-3 tools-grid">
+      <div class="section-head"><div><p class="eyebrow">01 / QUICK ACTIONS</p><h2 id="quick-actions">What do you need help with?</h2><p>Simple checks and clear next steps. Your message stays on this device.</p></div></div>
+      <div class="grid grid-2 tools-grid">
         ${cardLink('▤','checkMessage','checkMessageDesc','message')}
         ${cardLink('↗','checkLink','checkLinkDesc','link')}
-        <button type="button" class="action-card" data-page="qr"><span class="card-symbol" aria-hidden="true">▦</span><strong>QR code safety</strong><span>Safer UPI habits and checks before approving a payment.</span><span class="tool-arrow" aria-hidden="true">→</span></button>
+        <button type="button" class="action-card" data-page="qr"><span class="card-symbol" aria-hidden="true">▦</span><strong>Check QR / UPI safety</strong><span>Scanning a QR code or entering a PIN is not needed to receive money.</span><span class="tool-arrow" aria-hidden="true">→</span></button>
         ${cardLink('☎','getHelp','getHelpDesc','help')}
-        ${cardLink('✦','practiceTitle','practiceDesc','learn')}
-        ${cardLink('▣','privacyTitle','privacyDesc','privacy')}
       </div>
     </section>
     <section class="section" aria-labelledby="safety-rules">
