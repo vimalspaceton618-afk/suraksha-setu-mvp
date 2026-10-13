@@ -1,0 +1,11 @@
+{
+  "name": "Suraksha Setu — Everyday digital safety",
+  "short_name": "Suraksha Setu",
+  "description": "Privacy-first digital safety checks that run locally on your device.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7f3",
+  "theme_color": "#123b32",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
