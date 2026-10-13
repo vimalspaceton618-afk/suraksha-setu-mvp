@@ -107,7 +107,7 @@ function renderHome() {
       </div><div class="hero-mark" aria-hidden="true"><span>✓</span></div>
     </section>
     <section class="section" aria-labelledby="quick-actions"><div class="section-head"><div><p class="eyebrow">01 / ${lang==='ta'?'தொடங்குங்கள்':lang==='hi'?'शुरू करें':'GET STARTED'}</p><h2 id="quick-actions">${lang==='ta'?'உங்களுக்கு என்ன உதவி வேண்டும்?':lang==='hi'?'आपको किस मदद की ज़रूरत है?':'What do you need help with?'}</h2></div></div>
-      <div class="grid grid-3">${cardLink('▤','checkMessage','checkMessageDesc','message')}${cardLink('↗','checkLink','checkLinkDesc','link')}${cardLink('!','getHelp','getHelpDesc','help')}</div>
+      <div class="grid grid-3">${cardLink('▤','checkMessage','checkMessageDesc','message')}${cardLink('↗','checkLink','checkLinkDesc','link')}<button type="button" class="action-card" data-page="qr"><span class="card-symbol" aria-hidden="true">▦</span><strong>QR code safety</strong><span>Payment QR precautions and destination URL checking.</span></button>${cardLink('!','getHelp','getHelpDesc','help')}</div>
     </section>
     <section class="section"><div class="section-head"><div><p class="eyebrow">02 / ${lang==='ta'?'பாதுகாப்பான பழக்கங்கள்':lang==='hi'?'सुरक्षित आदतें':'SAFER HABITS'}</p><h2>${t('homeSafetyTitle')}</h2></div></div>
       <div class="grid grid-3"><article class="card"><span class="card-symbol" aria-hidden="true">01</span><h3>${t('rule1Title')}</h3><p>${t('rule1')}</p></article><article class="card"><span class="card-symbol" aria-hidden="true">02</span><h3>${t('rule2Title')}</h3><p>${t('rule2')}</p></article><article class="card"><span class="card-symbol" aria-hidden="true">03</span><h3>${t('rule3Title')}</h3><p>${t('rule3')}</p></article></div>
@@ -169,18 +169,23 @@ function renderPrivacy() {
 }
 function render() {
   document.documentElement.lang = lang;
-  document.title = `Suraksha Setu — ${({home:t('navHome'),message:t('navMessage'),link:t('navLink'),help:t('navHelp'),learn:t('navLearn'),privacy:t('navPrivacy')})[page] || t('tagline')}`;
+  document.title = `Suraksha Setu — ${({home:t('navHome'),message:t('navMessage'),link:t('navLink'),qr:'QR safety',help:t('navHelp'),learn:t('navLearn'),privacy:t('navPrivacy')})[page] || t('tagline')}`;
   document.querySelectorAll('[data-i18n]').forEach((el) => { const key = el.getAttribute('data-i18n'); el.textContent = t(key); });
   document.querySelectorAll('.nav-item').forEach((el) => {
     const active = el.dataset.page === page;
     el.classList.toggle('is-active', active);
     if (active) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current');
   });
-  const views = {home:renderHome, message:renderMessage, link:renderLink, help:renderHelp, learn:renderLearn, privacy:renderPrivacy};
+  const views = {home:renderHome, message:renderMessage, link:renderLink, qr:renderQrSafety, help:renderHelp, learn:renderLearn, privacy:renderPrivacy};
   app.innerHTML = (views[page] || renderHome)();
   if (page === 'help') document.querySelectorAll('[data-help-type]').forEach((el) => el.classList.toggle('is-selected', el.dataset.helpType === helpType));
 }
 function renderHelp() { return helpContent(); }
+function renderQrSafety() {
+  return `<section class="page-heading"><p class="eyebrow">QR CODE SAFETY</p><h1>Pause before you scan or pay.</h1><p>QR codes can lead to fake websites or unexpected payment requests. This version cannot decode QR images or use your camera, but you can follow these checks before approving a payment.</p></section>
+  <section class="form-card"><div class="card-symbol" aria-hidden="true">▦</div><h2>Before scanning a QR code</h2><ul class="clean-list"><li>Check whether a QR sticker looks replaced, damaged, or tampered with.</li><li>Preview the recipient name and amount inside your UPI app before approving.</li><li>Never enter your UPI PIN to receive money or claim a refund.</li><li>Stop if the payment screen shows an unexpected person or amount.</li></ul><div class="form-actions"><button class="button" data-page="link">Check destination URL →</button><button class="button button-secondary" data-page="help">Get help</button></div></section>
+  <section class="section notice"><strong>Important</strong><p>A QR code is not proof that a payment request is genuine. The link checker uses limited URL patterns; it cannot verify the recipient or guarantee that a website is safe.</p></section>`;
+}
 
 const MESSAGE_RULES = [
   { key:'reasonOtp', re:/\b(?:otp|one[ -]?time password|verification code|passcode|upi\s*pin|pin|password|share (?:the )?(?:code|otp|pin))\b|\b(?:ओटीपी|ओटिपी|पासवर्ड|पिन|otp|பின்|கடவுச்சொல்|ஒருமுறை கடவுச்சொல்)\b/i, points:3 },
