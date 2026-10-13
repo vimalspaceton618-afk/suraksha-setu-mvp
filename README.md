@@ -118,10 +118,10 @@ The repository includes a no-dependency Node.js test suite for the local message
 
 Run it with Node.js 20 or newer:
 
-\`\`\`bash
+```bash
 node --check app.js
 node --check sw.js
 node --test tests/security-smoke.test.cjs
-\`\`\`
+```
 
-GitHub Actions runs these checks on pushes to \`main\` and on pull requests. These tests are a regression gate, not a substitute for browser testing, independent security review, penetration testing, or native-speaker review of translations.
+GitHub Actions runs these checks on pushes to `main` and on pull requests. These tests are a regression gate, not a substitute for browser testing, independent security review, penetration testing, or native-speaker review of translations.
