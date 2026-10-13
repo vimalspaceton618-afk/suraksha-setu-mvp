@@ -24,5 +24,8 @@ jobs:
         run: |
           node --check app.js
           node --check sw.js
-      - name: Run no-dependency regression suite
+          node --check api/server.js
+      - name: Run frontend security regression suite
         run: node --test tests/security-smoke.test.cjs
+      - name: Run API input and privacy tests
+        run: node --test api/test/server.test.cjs
