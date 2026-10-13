@@ -75,3 +75,38 @@ Deploy the folder as a static site on a host that supports the `_headers` file (
 - `sw.js` — same-origin app-shell cache only
 - `icon.svg` — local app icon
 - `_headers` — production-style security headers for supporting static hosts
+
+
+## Bank-first implementation direction — zero-budget phase
+
+The current hosted app remains a static, local-first PWA. This phase simplifies navigation and documents the security boundary. No paid AI call, account system, or message upload is enabled.
+
+### Intended architecture
+
+- Client: existing static PWA; local message and URL heuristics remain available offline.
+- API (future, separate Render web service): validate requests, apply rate limits, return minimal structured results, and call an AI provider only when explicitly enabled.
+- AI boundary: provider credentials stay in server-side environment variables; never put keys in browser JavaScript or the repository.
+- Data: do not persist pasted messages or links by default. If a bank pilot needs metrics, collect consented, non-content operational counts with a documented retention period.
+- Operations: separate staging and production, health checks, dependency scanning, security headers, incident contact, and rollback procedure.
+
+### Budget and release gate
+
+The initial monthly infrastructure and AI budget is **₹0**. The live MVP must not make paid AI requests or promise AI-powered features yet. Validate the simplified experience with volunteer users and prospective bank partners first. Before enabling a remote API, obtain explicit budget approval, configure provider spend controls, set per-request limits, and confirm current hosting charges.
+
+### Bank-first pilot sequence
+
+1. Interview bank fraud-prevention, customer-support, accessibility, and information-security stakeholders; do not imply bank endorsement.
+2. Test the local-only PWA with 10–15 users across English, Tamil, and Hindi. Native speakers must review translations before public launch.
+3. Agree on pilot scope, data-processing terms, threat model, security review, and success metrics with one prospective institution.
+4. Build a separate API service with request validation, rate limits, privacy-preserving logs, and tests; keep the static app functional if the API is unavailable.
+5. Add AI explanations only after budget, privacy, model quality, and incident-handling gates are approved.
+
+### Proposed pilot measures
+
+- Correct comprehension of the recommended next action in user tests.
+- Time taken to find emergency guidance.
+- False-positive and false-negative rates for local warning rules on a reviewed test set.
+- Accessibility and language comprehension by language and user group.
+- No collection of message content by default; document any approved exception.
+
+See docs/SECURE-ARCHITECTURE.md and docs/BANK-PILOT.md for the staged design and partner plan.
