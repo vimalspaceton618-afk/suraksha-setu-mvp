@@ -100,45 +100,79 @@ function pageHeading(eyebrow, title, lead) { return `<div class="page-heading"><
 function cardLink(icon, title, desc, target) { return `<button type="button" class="action-card" data-page="${target}"><span class="card-symbol" aria-hidden="true">${icon}</span><strong>${t(title)}</strong><span>${t(desc)}</span></button>`; }
 
 function renderHome() {
-  return `
-    <section class="hero" aria-labelledby="home-title">
-      <div><p class="eyebrow">${t('homeEyebrow')}</p><h1 id="home-title">${t('homeTitle')}</h1><p class="lead">${t('homeLead')}</p>
-        <div class="button-row"><button class="button" data-page="message">${t('checkMessage')} →</button><button class="button button-secondary" data-page="help">${t('getHelp')}</button></div>
-      </div><div class="hero-mark" aria-hidden="true"><span>✓</span></div>
+  return \`
+    <section class="hero hero-modern" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <p class="eyebrow">\${t('homeEyebrow')}</p>
+        <h1 id="home-title">\${t('homeTitle')}</h1>
+        <p class="lead">\${t('homeLead')}</p>
+        <div class="button-row">
+          <button class="button" data-page="message"><span aria-hidden="true">▤</span> \${t('checkMessage')} <span aria-hidden="true">→</span></button>
+          <button class="button button-secondary" data-page="help"><span aria-hidden="true">☎</span> \${t('getHelp')}</button>
+        </div>
+        <div class="trust-row"><span>✓ Local checks</span><span>✓ No account</span><span>✓ English · தமிழ் · हिन्दी</span></div>
+      </div>
+      <div class="hero-art" aria-label="Shield illustration representing digital safety" role="img">
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <div class="shield-illustration"><span>✓</span></div>
+        <span class="floating-chip chip-top">Keep your OTP private</span><span class="floating-chip chip-bottom">Pause before you pay</span>
+      </div>
     </section>
-    <section class="section" aria-labelledby="quick-actions"><div class="section-head"><div><p class="eyebrow">01 / ${lang==='ta'?'தொடங்குங்கள்':lang==='hi'?'शुरू करें':'GET STARTED'}</p><h2 id="quick-actions">${lang==='ta'?'உங்களுக்கு என்ன உதவி வேண்டும்?':lang==='hi'?'आपको किस मदद की ज़रूरत है?':'What do you need help with?'}</h2></div></div>
-      <div class="grid grid-3">${cardLink('▤','checkMessage','checkMessageDesc','message')}${cardLink('↗','checkLink','checkLinkDesc','link')}<button type="button" class="action-card" data-page="qr"><span class="card-symbol" aria-hidden="true">▦</span><strong>QR code safety</strong><span>Payment QR precautions and destination URL checking.</span></button>${cardLink('!','getHelp','getHelpDesc','help')}</div>
+    <section class="section" aria-labelledby="quick-actions">
+      <div class="section-head"><div><p class="eyebrow">01 / QUICK ACTIONS</p><h2 id="quick-actions">How can we help you stay safe?</h2><p>Choose a tool. Text checks run in this browser.</p></div></div>
+      <div class="grid grid-3 tools-grid">
+        \${cardLink('▤','checkMessage','checkMessageDesc','message')}
+        \${cardLink('↗','checkLink','checkLinkDesc','link')}
+        <button type="button" class="action-card" data-page="qr"><span class="card-symbol" aria-hidden="true">▦</span><strong>QR code safety</strong><span>Safer UPI habits and checks before approving a payment.</span><span class="tool-arrow" aria-hidden="true">→</span></button>
+        \${cardLink('☎','getHelp','getHelpDesc','help')}
+        \${cardLink('✦','practiceTitle','practiceDesc','learn')}
+        \${cardLink('▣','privacyTitle','privacyDesc','privacy')}
+      </div>
     </section>
-    <section class="section"><div class="section-head"><div><p class="eyebrow">02 / ${lang==='ta'?'பாதுகாப்பான பழக்கங்கள்':lang==='hi'?'सुरक्षित आदतें':'SAFER HABITS'}</p><h2>${t('homeSafetyTitle')}</h2></div></div>
-      <div class="grid grid-3"><article class="card"><span class="card-symbol" aria-hidden="true">01</span><h3>${t('rule1Title')}</h3><p>${t('rule1')}</p></article><article class="card"><span class="card-symbol" aria-hidden="true">02</span><h3>${t('rule2Title')}</h3><p>${t('rule2')}</p></article><article class="card"><span class="card-symbol" aria-hidden="true">03</span><h3>${t('rule3Title')}</h3><p>${t('rule3')}</p></article></div>
+    <section class="section" aria-labelledby="safety-rules">
+      <div class="section-head"><div><p class="eyebrow">02 / STAY ALERT</p><h2 id="safety-rules">\${t('homeSafetyTitle')}</h2></div></div>
+      <div class="grid grid-3 safety-grid">
+        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">01</span><h3>\${t('rule1Title')}</h3><p>\${t('rule1')}</p></article>
+        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">02</span><h3>\${t('rule2Title')}</h3><p>\${t('rule2')}</p></article>
+        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">03</span><h3>\${t('rule3Title')}</h3><p>\${t('rule3')}</p></article>
+      </div>
     </section>
-    <section class="section grid grid-2"><article class="card"><span class="card-symbol" aria-hidden="true">✓</span><h3>${t('practiceTitle')}</h3><p>${t('practiceDesc')}</p><button class="text-button" data-page="learn">${lang==='ta'?'பயிற்சியைத் தொடங்கு':lang==='hi'?'अभ्यास शुरू करें':'Start practice'} →</button></article><article class="card"><span class="card-symbol" aria-hidden="true">▣</span><h3>${t('privacyTitle')}</h3><p>${t('privacyDesc')}</p><button class="text-button" data-page="privacy">${lang==='ta'?'தரவு விதிகளைப் படிக்கவும்':lang==='hi'?'डेटा नियम पढ़ें':'Read data rules'} →</button></article></section>
-    <section class="section notice"><strong>${t('homeNoteTitle')}</strong><p>${t('homeNote')}</p></section>
-    <p class="help-text">${t('installNote')}</p>`;
+    <section class="section privacy-banner"><div><p class="eyebrow">BUILT AROUND YOUR PRIVACY</p><h2>\${t('privacyTitle')}</h2><p>\${t('privacyDesc')}</p></div><button class="button button-secondary" data-page="privacy">Read privacy rules <span aria-hidden="true">→</span></button></section>
+    <section class="section notice"><strong>\${t('homeNoteTitle')}</strong><p>\${t('homeNote')}</p></section>
+    <p class="help-text">\${t('installNote')}</p>\`;
 }
 function renderMessage() {
-  return `${pageHeading('messageEyebrow','messageTitle','messageLead')}
-    <section class="form-card"><label class="field-label" for="message-input">${t('messageLabel')}</label><textarea id="message-input" maxlength="10000" placeholder="${t('messagePlaceholder')}" autocomplete="off" autocapitalize="off" spellcheck="true"></textarea><p class="help-text">${t('messageHelp')}</p>
-      <div class="form-actions"><button class="button" data-action="scan-message">${t('scanButton')}</button><button class="button button-secondary" data-action="load-example">${t('exampleButton')}</button><button class="button button-secondary" data-action="clear-message">${t('clearButton')}</button></div>
+  return \`\${pageHeading('messageEyebrow','messageTitle','messageLead')}
+    <section class="form-card tool-form-card">
+      <div class="tool-label"><span class="card-symbol" aria-hidden="true">▤</span><div><strong>Private, on-device check</strong><p>No message is uploaded by this checker.</p></div><span class="local-pill">LOCAL</span></div>
+      <label class="field-label" for="message-input">\${t('messageLabel')}</label>
+      <textarea id="message-input" maxlength="10000" placeholder="\${t('messagePlaceholder')}" autocomplete="off" autocapitalize="off" spellcheck="true" aria-describedby="message-help message-count"></textarea>
+      <div class="input-meta"><p id="message-help" class="help-text">\${t('messageHelp')}</p><span id="message-count" class="character-count" aria-live="polite">0 / 10000</span></div>
+      <div class="form-actions"><button class="button" data-action="scan-message"><span aria-hidden="true">⌕</span> \${t('scanButton')}</button><button class="button button-secondary" data-action="load-example">\${t('exampleButton')}</button><button class="button button-secondary" data-action="clear-message">\${t('clearButton')}</button></div>
       <div id="message-result" aria-live="polite"></div>
     </section>
-    <section class="section notice"><strong>${lang==='ta'?'முக்கியம்':lang==='hi'?'ज़रूरी बात':'Important'}</strong><p>${t('actionLow')}</p></section>`;
+    <section class="section notice"><strong>Remember</strong><p>\${t('actionLow')}</p></section>\`;
 }
 function renderLink() {
-  return `${pageHeading('urlEyebrow','urlTitle','urlLead')}
-    <section class="form-card"><label class="field-label" for="url-input">${t('urlLabel')}</label><input id="url-input" type="text" inputmode="url" maxlength="2048" placeholder="${t('urlPlaceholder')}" autocomplete="off" autocapitalize="off" spellcheck="false"><p class="help-text">${t('urlHelp')}</p>
-      <div class="form-actions"><button class="button" data-action="scan-link">${t('checkLinkButton')}</button><button class="button button-secondary" data-action="clear-link">${t('clearLinkButton')}</button></div>
+  return \`\${pageHeading('urlEyebrow','urlTitle','urlLead')}
+    <section class="form-card tool-form-card">
+      <div class="tool-label"><span class="card-symbol" aria-hidden="true">↗</span><div><strong>Inspect the text of a URL</strong><p>The address is analysed locally and is not opened.</p></div><span class="local-pill">LOCAL</span></div>
+      <label class="field-label" for="url-input">\${t('urlLabel')}</label>
+      <input id="url-input" type="text" inputmode="url" maxlength="2048" placeholder="\${t('urlPlaceholder')}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="url-help">
+      <p id="url-help" class="help-text">\${t('urlHelp')}</p>
+      <div class="url-tips"><strong>Quick checks</strong><span>Look-alike spelling</span><span>Unexpected hyphens</span><span>Shortened URLs</span></div>
+      <div class="form-actions"><button class="button" data-action="scan-link"><span aria-hidden="true">⌕</span> \${t('checkLinkButton')}</button><button class="button button-secondary" data-action="clear-link">\${t('clearLinkButton')}</button></div>
       <div id="link-result" aria-live="polite"></div>
     </section>
-    <section class="section notice"><strong>${lang==='ta'?'நினைவில் கொள்ளுங்கள்':lang==='hi'?'याद रखें':'Remember'}</strong><p>${t('urlAction')}</p></section>`;
+    <section class="section notice"><strong>Important</strong><p>\${t('urlAction')}</p></section>\`;
 }
 function helpContent() {
-  const opts = `<div class="choice-grid">
-    <button class="choice" data-help-type="general">${t('chooseMessage')}<small>${t('chooseMessageDesc')}</small></button>
-    <button class="choice" data-help-type="paid">${t('choosePaid')}<small>${t('choosePaidDesc')}</small></button>
-    <button class="choice" data-help-type="control">${t('chooseControl')}<small>${t('chooseControlDesc')}</small></button>
-    <button class="choice" data-help-type="shared">${t('chooseInfo')}<small>${t('chooseInfoDesc')}</small></button>
-  </div>`;
+  const opts = \`<div class="choice-grid help-choice-grid">
+    <button class="choice" data-help-type="general"><span class="choice-icon">!</span>\${t('chooseMessage')}<small>\${t('chooseMessageDesc')}</small></button>
+    <button class="choice" data-help-type="paid"><span class="choice-icon">₹</span>\${t('choosePaid')}<small>\${t('choosePaidDesc')}</small></button>
+    <button class="choice" data-help-type="control"><span class="choice-icon">▣</span>\${t('chooseControl')}<small>\${t('chooseControlDesc')}</small></button>
+    <button class="choice" data-help-type="shared"><span class="choice-icon">⌑</span>\${t('chooseInfo')}<small>\${t('chooseInfoDesc')}</small></button>
+  </div>\`;
   const sets = {
     paid: ['paidTitle','paidLead',[['paid1Title','paid1'],['paid2Title','paid2'],['paid3Title','paid3'],['paid4Title','paid4']]],
     control: ['callTitle',null,[['call1Title','call1'],['call2Title','call2'],['call3Title','call3']]],
@@ -146,26 +180,35 @@ function helpContent() {
     general: ['generalTitle',null,[['general1Title','general1'],['general2Title','general2'],['general3Title','general3']]]
   };
   const s = sets[helpType] || sets.general;
-  const steps = `<section class="section"><div class="section-head"><div><p class="eyebrow">${lang==='ta'?'அடுத்த படிகள்':lang==='hi'?'अगले कदम':'NEXT STEPS'}</p><h2>${t(s[0])}</h2>${s[1]?`<p>${t(s[1])}</p>`:''}</div></div><div class="steps">${s[2].map(([title,desc])=>`<article class="step"><strong>${t(title)}</strong><p>${t(desc)}</p></article>`).join('')}</div></section>`;
-  return `${pageHeading('helpEyebrow','helpTitle','helpLead')}${opts}${steps}
-    <section class="section card"><h2>${t('officialHelpTitle')}</h2><div class="button-row"><a class="button button-danger" href="tel:1930">${t('call1930')}</a><a class="button button-secondary" href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener noreferrer">${t('reportOnline')} ↗</a><a class="button button-secondary" href="https://cybercrime.gov.in/Webform/cyber_suspect.aspx" target="_blank" rel="noopener noreferrer">${t('reportSuspect')} ↗</a></div><p class="help-text">${t('helpDisclaimer')}</p></section>`;
+  const steps = \`<section class="section"><div class="section-head"><div><p class="eyebrow">\${lang==='ta'?'அடுத்த படிகள்':lang==='hi'?'अगले कदम':'NEXT STEPS'}</p><h2>\${t(s[0])}</h2>\${s[1]?\`<p>\${t(s[1])}</p>\`:''}</div></div><div class="steps">\${s[2].map(([title,desc])=>\`<article class="step"><strong>\${t(title)}</strong><p>\${t(desc)}</p></article>\`).join('')}</div></section>\`;
+  return \`\${pageHeading('helpEyebrow','helpTitle','helpLead')}
+    <section class="emergency-banner"><span class="emergency-icon" aria-hidden="true">1930</span><div><strong>Financial cyber fraud in India?</strong><p>Call 1930 as soon as possible and contact your bank or payment app immediately.</p></div><a class="button button-danger" href="tel:1930">Call 1930</a></section>
+    <section class="section"><div class="section-head"><div><p class="eyebrow">CHOOSE YOUR SITUATION</p><h2>Find the next safe step</h2><p>You can change your selection at any time.</p></div></div>\${opts}</section>
+    \${steps}
+    <section class="section card official-help-card"><p class="eyebrow">OFFICIAL SUPPORT</p><h2>\${t('officialHelpTitle')}</h2><div class="official-link-row"><a class="official-link" href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener noreferrer"><span class="card-symbol">↗</span><span><strong>\${t('reportOnline')}</strong><small>cybercrime.gov.in</small></span><span>→</span></a><a class="official-link" href="https://cybercrime.gov.in/Webform/cyber_suspect.aspx" target="_blank" rel="noopener noreferrer"><span class="card-symbol">⌕</span><span><strong>\${t('reportSuspect')}</strong><small>Report suspicious identifiers</small></span><span>→</span></a></div><p class="help-text">\${t('helpDisclaimer')}</p></section>\`;
 }
-const QUESTIONS = [
-  {q:'q1', a:['q1a','q1b','q1c'], correct:1, why:'q1why'},
-  {q:'q2', a:['q2a','q2b','q2c'], correct:2, why:'q2why'},
-  {q:'q3', a:['q3a','q3b','q3c'], correct:0, why:'q3why'},
-  {q:'q4', a:['q4a','q4b','q4c'], correct:2, why:'q4why'}
-];
 function renderLearn() {
   const done = quizIndex >= QUESTIONS.length;
-  if (done) return `${pageHeading('learnEyebrow','quizDone','learnLead')}<section class="form-card"><h2>${t('quizScore')}: ${quizScore} / ${QUESTIONS.length}</h2><p>${quizScore===QUESTIONS.length?(lang==='ta'?'அருமை! பாதுகாப்பான தேர்வுகள்.':lang==='hi'?'बहुत बढ़िया! सुरक्षित चुनाव।':'Great work. You chose the safer options.'):(lang==='ta'?'விதிகளை மறுபடியும் படித்து மீண்டும் முயற்சிக்கவும்.':lang==='hi'?'नियम फिर पढ़ें और दोबारा कोशिश करें।':'Review the rules and try again.')}</p><button class="button" data-action="quiz-restart">${t('quizRestart')}</button></section>`;
+  if (done) return \`\${pageHeading('learnEyebrow','quizDone','learnLead')}<section class="form-card quiz-complete"><div class="completion-icon" aria-hidden="true">✓</div><h2>\${t('quizScore')}: \${quizScore} / \${QUESTIONS.length}</h2><p>\${quizScore===QUESTIONS.length?(lang==='ta'?'அருமை! பாதுகாப்பான தேர்வுகள்.':lang==='hi'?'बहुत बढ़िया! सुरक्षित चुनाव।':'Great work. You chose the safer options.'):(lang==='ta'?'விதிகளை மறுபடியும் படித்து மீண்டும் முயற்சிக்கவும்.':lang==='hi'?'नियम फिर पढ़ें और दोबारा कोशिश करें।':'Review the rules and try again.')}</p><button class="button" data-action="quiz-restart">\${t('quizRestart')}</button></section>\`;
   const q = QUESTIONS[quizIndex];
-  return `${pageHeading('learnEyebrow','learnTitle','learnLead')}<section class="form-card"><p class="eyebrow">${t('quizQuestion')} ${quizIndex+1} / ${QUESTIONS.length}</p><h2>${t(q.q)}</h2><div id="quiz-options">${q.a.map((key, i)=>`<button class="quiz-option" data-action="quiz-answer" data-answer="${i}" ${quizAnswered?'disabled':''}>${t(key)}</button>`).join('')}</div>${quizAnswered?`<div class="quiz-feedback" role="status"><strong>${quizScore>0 && QUESTIONS[quizIndex].correct===-1?'':(lang==='ta'?'விளக்கம்':lang==='hi'?'समझें':'Why this matters')}:</strong> ${t(q.why)}<p>${t('quizScore')}: ${quizScore} / ${quizIndex+1}</p><button class="button" data-action="quiz-next">${quizIndex===QUESTIONS.length-1?t('quizDone'):t('quizNext')} →</button></div>`:''}</section>`;
+  const progress = Math.round(((quizIndex + (quizAnswered ? 1 : 0)) / QUESTIONS.length) * 100);
+  return \`\${pageHeading('learnEyebrow','learnTitle','learnLead')}
+    <section class="learning-banner"><div><p class="eyebrow">SMALL STEPS. BIG PROTECTION.</p><h2>Be aware. Be safe.</h2><p>Practice how to respond to common scam attempts. Your answers stay in this session.</p></div><div class="learning-badge" aria-hidden="true">✓</div></section>
+    <section class="section form-card quiz-card">
+      <div class="quiz-progress-head"><span class="eyebrow">\${t('quizQuestion')} \${quizIndex+1} / \${QUESTIONS.length}</span><strong>\${progress}%</strong></div>
+      <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="\${progress}"><span style="width:\${progress}%"></span></div>
+      <h2>\${t(q.q)}</h2>
+      <div id="quiz-options">\${q.a.map((key, i)=>\`<button class="quiz-option" data-action="quiz-answer" data-answer="\${i}" \${quizAnswered?'disabled':''}>\${t(key)}<span aria-hidden="true">→</span></button>\`).join('')}</div>
+      \${quizAnswered?\`<div class="quiz-feedback" role="status"><strong>\${lang==='ta'?'விளக்கம்':lang==='hi'?'समझें':'Why this matters'}:</strong> \${t(q.why)}<p>\${t('quizScore')}: \${quizScore} / \${quizIndex+1}</p><button class="button" data-action="quiz-next">\${quizIndex===QUESTIONS.length-1?t('quizDone'):t('quizNext')} →</button></div>\`:''}
+    </section>\`;
 }
 function renderPrivacy() {
   const rows = [['policyLocalTitle','policyLocal'],['policyNoAI','policyNoAIText'],['policyStorage','policyStorageText'],['policyNoPermTitle','policyNoPerm'],['policyNoGuaranteeTitle','policyNoGuarantee'],['policyNextTitle','policyNext']];
-  return `${pageHeading('privacyEyebrow','privacyHeading','privacyLead')}<section class="card">${rows.map(([h,p])=>`<div class="policy-row"><strong>${t(h)}</strong><p>${t(p)}</p></div>`).join('')}</section>
-    <section class="section card"><h2>${t('reportTitle')}</h2><p><a href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener noreferrer">${t('cyberPortal')} ↗</a></p><p><a href="https://sancharsaathi.gov.in/" target="_blank" rel="noopener noreferrer">${t('chakshu')} ↗</a></p><p class="help-text">${t('officialNote')}</p></section>`;
+  return \`\${pageHeading('privacyEyebrow','privacyHeading','privacyLead')}
+    <section class="privacy-intro"><span class="privacy-shield" aria-hidden="true">✓</span><div><h2>Privacy by design</h2><p>Suraksha Setu is a front-end prototype. Checked text is processed in your browser and is not sent to a server by the checker.</p></div></section>
+    <section class="section card privacy-policy-card">\${rows.map(([h,p])=>\`<div class="policy-row"><strong>\${t(h)}</strong><p>\${t(p)}</p></div>\`).join('')}</section>
+    <section class="section card"><p class="eyebrow">OFFICIAL DESTINATIONS</p><h2>\${t('reportTitle')}</h2><p><a href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener noreferrer">\${t('cyberPortal')} ↗</a></p><p><a href="https://sancharsaathi.gov.in/" target="_blank" rel="noopener noreferrer">\${t('chakshu')} ↗</a></p><p class="help-text">\${t('officialNote')}</p></section>
+    <section class="section notice"><strong>Before public launch</strong><p>This prototype still needs independent security review, translated user testing, and a published vulnerability-reporting contact.</p></section>\`;
 }
 function render() {
   document.documentElement.lang = lang;
@@ -182,20 +225,13 @@ function render() {
 }
 function renderHelp() { return helpContent(); }
 function renderQrSafety() {
-  return `<section class="page-heading"><p class="eyebrow">QR CODE SAFETY</p><h1>Pause before you scan or pay.</h1><p>QR codes can lead to fake websites or unexpected payment requests. This version cannot decode QR images or use your camera, but you can follow these checks before approving a payment.</p></section>
-  <section class="form-card"><div class="card-symbol" aria-hidden="true">▦</div><h2>Before scanning a QR code</h2><ul class="clean-list"><li>Check whether a QR sticker looks replaced, damaged, or tampered with.</li><li>Preview the recipient name and amount inside your UPI app before approving.</li><li>Never enter your UPI PIN to receive money or claim a refund.</li><li>Stop if the payment screen shows an unexpected person or amount.</li></ul><div class="form-actions"><button class="button" data-page="link">Check destination URL →</button><button class="button button-secondary" data-page="help">Get help</button></div></section>
-  <section class="section notice"><strong>Important</strong><p>A QR code is not proof that a payment request is genuine. The link checker uses limited URL patterns; it cannot verify the recipient or guarantee that a website is safe.</p></section>`;
+  return \`<section class="page-heading"><p class="eyebrow">QR CODE SAFETY</p><h1>Pause before you scan or pay.</h1><p>QR codes can open fake websites or lead to unexpected payment requests. This version cannot decode QR images or use your camera; use these checks before approving a payment.</p></section>
+    <section class="form-card qr-guide"><div class="qr-guide-icon" aria-hidden="true">▦</div><h2>Before scanning a QR code</h2>
+      <div class="qr-rule-list"><article><span>01</span><div><strong>Inspect the QR label</strong><p>Be cautious if a sticker appears to cover another code or looks tampered with.</p></div></article><article><span>02</span><div><strong>Check who gets paid</strong><p>Preview the recipient name and amount inside your UPI app before approving.</p></div></article><article><span>03</span><div><strong>Never use a PIN to receive money</strong><p>Your UPI PIN authorises a payment. Do not enter it to receive a refund or incoming money.</p></div></article><article><span>04</span><div><strong>Stop if details do not match</strong><p>Cancel if the displayed recipient or amount is unexpected.</p></div></article></div>
+      <div class="form-actions"><button class="button" data-page="link">Check destination URL →</button><button class="button button-secondary" data-page="help">Get help</button></div>
+    </section>
+    <section class="section notice"><strong>Important limitation</strong><p>This page is a guidance checklist, not an image scanner. The URL checker only applies limited local patterns and cannot verify a recipient or guarantee that a site is safe.</p></section>\`;
 }
-
-const MESSAGE_RULES = [
-  { key:'reasonOtp', re:/\b(?:otp|one[ -]?time password|verification code|passcode|upi\s*pin|pin|password|share (?:the )?(?:code|otp|pin))\b|\b(?:ओटीपी|ओटिपी|पासवर्ड|पिन|otp|பின்|கடவுச்சொல்|ஒருமுறை கடவுச்சொல்)\b/i, points:3 },
-  { key:'reasonUrgency', re:/\b(?:urgent|immediately|within \d+ minutes?|account.{0,18}(?:block|suspend|close|expire)|will be blocked|last warning|act now|limited time|आज ही|तुरंत|खाता बंद|अभी करें|உடனே|கணக்கு முடக்க|இன்றே)\b/i, points:2 },
-  { key:'reasonAuthority', re:/\b(?:police|cbi|ed officer|enforcement directorate|digital arrest|arrest warrant|court order|customs officer|cyber police|पुलिस|गिरफ्तार|डिजिटल अरेस्ट|காவல்துறை|கைது|டிஜிட்டல் கைது)\b/i, points:3 },
-  { key:'reasonRemote', re:/\b(?:anydesk|teamviewer|quick.?support|remote access|screen.?share|install (?:this |the )?app|download apk|enable accessibility|स्क्रीन शेयर|रिमोट एक्सेस|திரையைப் பகிர|செயலி நிறுவ)\b/i, points:3 },
-  { key:'reasonLink', re:/https?:\/\/|www\.|\b[a-z0-9-]+\.(?:com|in|net|org|co|io|app|xyz|site|top|click|info)\b/i, points:1 },
-  { key:'reasonPayment', re:/\b(?:send money|transfer (?:money|funds)|pay now|upi collect|collect request|scan (?:this )?qr|approve payment|refund fee|processing fee|bank details|भेजें|पैसे भेज|भुगतान करें|பணம் அனுப்பு|பணம் செலுத்த|qr ஸ்கேன்)\b/i, points:2 },
-  { key:'reasonPrize', re:/\b(?:you (?:have )?won|winner|lottery|prize money|guaranteed returns?|double your money|work from home.*salary|job offer|cashback|refund|इनाम|लॉटरी|रिफंड|பரிசு|பணம் திரும்ப|வேலை வாய்ப்பு)\b/i, points:2 }
-];
 function scanMessage(text) {
   const found = MESSAGE_RULES.filter((r) => r.re.test(text));
   const score = found.reduce((sum, item) => sum + item.points, 0);
@@ -258,6 +294,13 @@ function renderUrlResult(result) {
   const reasons = result.keys.length ? result.keys.map((key)=>`<li>${t(key)}</li>`).join('') : `<li>${t('noUrlRules')}</li>`;
   return `<section class="result"><div class="result-head result-${level}"><span class="result-symbol" aria-hidden="true">${level==='high'?'!':level==='medium'?'?':'i'}</span><div><h3>${title}</h3><p>${lead}</p></div></div><div class="result-body"><h3>${t('urlHost')}</h3><p><span class="inline-code">${escapeHTML(result.host)}</span> · ${escapeHTML(result.protocol)} · ${escapeHTML(result.port)}</p><h3>${t('urlReasons')}</h3><ul>${reasons}</ul><p class="result-top-gap">${t('urlAction')}</p></div><p class="result-footnote">${t('rememberText')}</p></section>`;
 }
+
+document.addEventListener('input', (event) => {
+  if (event.target && event.target.id === 'message-input') {
+    const count = document.getElementById('message-count');
+    if (count) count.textContent = `${event.target.value.length.toLocaleString()} / 10000`;
+  }
+});
 
 document.addEventListener('click', (event) => {
   const pageButton = event.target.closest('[data-page]');
