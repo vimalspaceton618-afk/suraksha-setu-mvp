@@ -230,6 +230,16 @@ function renderQrSafety() {
     </section>
     <section class="section notice"><strong>Important limitation</strong><p>This page is a guidance checklist, not an image scanner. The URL checker only applies limited local patterns and cannot verify a recipient or guarantee that a site is safe.</p></section>`;
 }
+const MESSAGE_RULES = [
+  { key: 'reasonOtp', points: 2, re: /\b(?:otp|one[- ]time password|upi\s*pin|pin|password|verification code|passcode)\b/i },
+  { key: 'reasonUrgency', points: 1, re: /\b(?:urgent|immediately|within\s+\d+\s*(?:minutes?|mins?|hours?)|today only|expires? (?:today|soon)|account (?:will be|is being) (?:blocked|suspended)|last warning|final notice|act now)\b/i },
+  { key: 'reasonAuthority', points: 3, re: /\b(?:police|cbi|enforcement directorate|ed officer|court|digital arrest|customs officer|cyber cell)\b/i },
+  { key: 'reasonRemote', points: 3, re: /\b(?:anydesk|teamviewer|quick.?support|remote access|screen sharing|share your screen|install (?:this|the|an?) app|download (?:this|the|an?) app)\b/i },
+  { key: 'reasonLink', points: 1, re: /(?:https?:\/\/|www\.)\S+/i },
+  { key: 'reasonPayment', points: 2, re: /\b(?:send money|transfer (?:money|funds)|upi|qr code|scan (?:the )?qr|payment request|collect request|approve (?:the )?payment|pay (?:now|fee|tax)|processing fee|bank details|receive money)\b/i },
+  { key: 'reasonPrize', points: 2, re: /\b(?:won|winner|prize|lottery|free gift|cashback|refund|guaranteed returns?|job offer|investment opportunity|double your money|earn \d+%)\b/i }
+];
+
 function scanMessage(text) {
   const found = MESSAGE_RULES.filter((r) => r.re.test(text));
   const score = found.reduce((sum, item) => sum + item.points, 0);

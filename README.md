@@ -110,3 +110,18 @@ The initial monthly infrastructure and AI budget is **₹0**. The live MVP must 
 - No collection of message content by default; document any approved exception.
 
 See docs/SECURE-ARCHITECTURE.md and docs/BANK-PILOT.md for the staged design and partner plan.
+
+
+## Local regression tests
+
+The repository includes a no-dependency Node.js test suite for the local message/URL rules, risky URL schemes, HTML escaping, Content Security Policy, service-worker boundaries, and the no-network/no-message-storage contract.
+
+Run it with Node.js 20 or newer:
+
+\`\`\`bash
+node --check app.js
+node --check sw.js
+node --test tests/security-smoke.test.cjs
+\`\`\`
+
+GitHub Actions runs these checks on pushes to \`main\` and on pull requests. These tests are a regression gate, not a substitute for browser testing, independent security review, penetration testing, or native-speaker review of translations.
