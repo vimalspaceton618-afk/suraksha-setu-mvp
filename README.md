@@ -1,16 +1,17 @@
-# Suraksha Setu — MVP 0.1
+# Suraksha Setu — MVP 0.2
 
 A privacy-first, no-AI prototype for everyday digital safety in India. This is a **working front-end MVP**, not yet a production security product.
 
 ## Included in this MVP
 
-- Responsive interface with English, Tamil and Hindi language choices.
+- Refreshed responsive interface with English, Tamil and Hindi language choices; mobile-first cards, clearer page hierarchy, and accessible focus states.
 - Local message-pattern checker using explicit regular-expression rules.
 - Local URL inspector that parses an address but **never visits the entered site**.
+- Dedicated QR/UPI safety-guidance page with recipient, amount, and PIN checks; image decoding and camera scanning are not implemented.
 - Step-by-step help paths for suspected fraud, money already sent, remote-access pressure, and shared secrets.
 - Official links for India's cybercrime reporting services and a tap-to-call link for 1930.
-- Four-question, offline practice quiz.
-- PWA manifest and service worker for app-like installation and offline loading.
+- Four-question, offline practice quiz with visual progress feedback.
+- PWA manifest and versioned service worker cache for app-like installation and offline loading; cache version bumped with the refreshed UI.
 - Strict Content Security Policy and hosting security headers.
 - No account, backend, analytics, ad tracker, generative AI, third-party script, or upload of checked message/link content.
 
