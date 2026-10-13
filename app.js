@@ -240,9 +240,9 @@ function inspectUpiIntent(raw) {
   const note = (params.get('tn') || '').trim();
   const issues = [];
   if (!address) issues.push('No payee UPI ID (pa) was included in the payload.');
-  else if (!/^[^\\s@]+@[^\\s@]+$/.test(address)) issues.push('The payee address does not resemble a standard UPI ID. Verify it in your payment app.');
+  else if (!/^[^\s@]+@[^\s@]+$/.test(address)) issues.push('The payee address does not resemble a standard UPI ID. Verify it in your payment app.');
   if (!payee) issues.push('No payee display name was included. Check the recipient shown by your UPI app.');
-  if (amountRaw && (!/^\\d+(?:\\.\\d{1,2})?$/.test(amountRaw) || Number(amountRaw) <= 0)) issues.push('The amount field is unusual. Do not approve the payment until the amount is clear.');
+  if (amountRaw && (!/^\d+(?:\.\d{1,2})?$/.test(amountRaw) || Number(amountRaw) <= 0)) issues.push('The amount field is unusual. Do not approve the payment until the amount is clear.');
   if (currency !== 'INR') issues.push('The payload declares a currency other than INR. Verify support and details with your payment provider.');
   if (!amountRaw) issues.push('No amount is specified. Check the final amount in your UPI app before approving.');
   return {
