@@ -101,43 +101,30 @@ function cardLink(icon, title, desc, target) { return `<button type="button" cla
 
 function renderHome() {
   return `
-    <section class="hero hero-modern" aria-labelledby="home-title">
-      <div class="hero-copy">
-        <p class="eyebrow">${t('homeEyebrow')}</p>
-        <h1 id="home-title">${t('homeTitle')}</h1>
-        <p class="lead">${t('homeLead')}</p>
-        <div class="button-row">
-          <button class="button" data-page="message"><span aria-hidden="true">▤</span> ${t('checkMessage')} <span aria-hidden="true">→</span></button>
-          <button class="button button-secondary" data-page="help"><span aria-hidden="true">☎</span> ${t('getHelp')}</button>
-        </div>
-        <div class="trust-row"><span>✓ Local checks</span><span>✓ No account</span><span>✓ English · தமிழ் · हिन्दी</span></div>
+    <section class="dashboard-welcome" aria-labelledby="home-title">
+      <div class="dashboard-welcome-copy">
+        <p class="eyebrow">DIGITAL SAFETY, MADE PRACTICAL</p>
+        <h1 id="home-title">A safer internet starts with a second look.</h1>
+        <p>Check suspicious messages, links and payment requests before you act.</p>
+        <div class="welcome-trust"><span>✓ No sign-in</span><span>✓ No content upload</span><span>✓ Free to use</span></div>
       </div>
-      <div class="hero-art" aria-label="Shield illustration representing digital safety" role="img">
-        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
-        <div class="shield-illustration"><span>✓</span></div>
-        <span class="floating-chip chip-top">Keep your OTP private</span><span class="floating-chip chip-bottom">Pause before you pay</span>
+      <div class="welcome-emblem" aria-hidden="true"><div class="welcome-shield">✓</div><strong>Pause. Check. Proceed.</strong></div>
+    </section>
+    <section class="section dashboard-tools" aria-labelledby="quick-actions">
+      <div class="section-head"><div><p class="eyebrow">YOUR SAFETY TOOLS</p><h2 id="quick-actions">What would you like to check?</h2><p>Choose a tool to get a clear explanation and practical next steps.</p></div></div>
+      <div class="grid grid-3 tools-grid dashboard-tool-grid">
+        <button type="button" class="dashboard-tool-card featured" data-page="message"><span class="tool-number">01</span><span class="card-symbol" aria-hidden="true">✓</span><strong>Message checker</strong><span>Spot urgency, impersonation, prize scams and requests for sensitive information.</span><span class="tool-cta">Open checker <b aria-hidden="true">→</b></span></button>
+        <button type="button" class="dashboard-tool-card" data-page="link"><span class="tool-number">02</span><span class="card-symbol" aria-hidden="true">↗</span><strong>Link inspector</strong><span>Review a URL for suspicious structure, deceptive domains and risky redirects.</span><span class="tool-cta">Inspect a link <b aria-hidden="true">→</b></span></button>
+        <button type="button" class="dashboard-tool-card" data-page="qr"><span class="tool-number">03</span><span class="card-symbol" aria-hidden="true">⌗</span><strong>QR & UPI safety</strong><span>Understand a payment URI and check key details before approving a payment.</span><span class="tool-cta">Check payment <b aria-hidden="true">→</b></span></button>
       </div>
     </section>
-    <section class="section" aria-labelledby="quick-actions">
-      <div class="section-head"><div><p class="eyebrow">01 / QUICK ACTIONS</p><h2 id="quick-actions">What do you need help with?</h2><p>Simple checks and clear next steps. Your message stays on this device.</p></div></div>
-      <div class="grid grid-2 tools-grid">
-        ${cardLink('▤','checkMessage','checkMessageDesc','message')}
-        ${cardLink('↗','checkLink','checkLinkDesc','link')}
-        <button type="button" class="action-card" data-page="qr"><span class="card-symbol" aria-hidden="true">▦</span><strong>Check QR / UPI safety</strong><span>Scanning a QR code or entering a PIN is not needed to receive money.</span><span class="tool-arrow" aria-hidden="true">→</span></button>
-        ${cardLink('☎','getHelp','getHelpDesc','help')}
-      </div>
+    <section class="section dashboard-lower">
+      <article class="card learning-card"><p class="eyebrow">BUILD YOUR INSTINCTS</p><h2>Learn to spot common scams</h2><p>Short, practical scenarios help you practise what to look for before a scam reaches you.</p><div class="learning-action"><span><strong>Practice quiz</strong><small>Quick scenarios · private by design</small></span><button class="button" data-page="learn">Start practice <span aria-hidden="true">→</span></button></div></article>
+      <article class="card safety-note-card"><span class="card-symbol" aria-hidden="true">!</span><p class="eyebrow">REMEMBER</p><h2>Never share secrets</h2><p>Never share an OTP, UPI PIN, password, or screen-sharing access with someone who contacts you.</p><button class="text-button" data-page="help">Find official help →</button></article>
     </section>
-    <section class="section" aria-labelledby="safety-rules">
-      <div class="section-head"><div><p class="eyebrow">02 / STAY ALERT</p><h2 id="safety-rules">${t('homeSafetyTitle')}</h2></div></div>
-      <div class="grid grid-3 safety-grid">
-        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">01</span><h3>${t('rule1Title')}</h3><p>${t('rule1')}</p></article>
-        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">02</span><h3>${t('rule2Title')}</h3><p>${t('rule2')}</p></article>
-        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">03</span><h3>${t('rule3Title')}</h3><p>${t('rule3')}</p></article>
-      </div>
-    </section>
-    <section class="section privacy-banner"><div><p class="eyebrow">BUILT AROUND YOUR PRIVACY</p><h2>${t('privacyTitle')}</h2><p>${t('privacyDesc')}</p></div><button class="button button-secondary" data-page="privacy">Read privacy rules <span aria-hidden="true">→</span></button></section>
-    <section class="section notice"><strong>${t('homeNoteTitle')}</strong><p>${t('homeNote')}</p></section>
-    <p class="help-text">${t('installNote')}</p>`;
+    <section class="section privacy-strip"><span class="privacy-strip-icon" aria-hidden="true">✓</span><div><strong>Your privacy comes first</strong><p>Checks run locally on this device. The text you inspect is not uploaded.</p></div><button class="button button-secondary" data-page="privacy">Privacy & rules <span aria-hidden="true">→</span></button></section>
+    <p class="dashboard-disclaimer">Suraksha Setu uses limited local rules. A result cannot prove that a message, link, or payment is safe.</p>
+  `;
 }
 function renderMessage() {
   return `${pageHeading('messageEyebrow','messageTitle','messageLead')}
