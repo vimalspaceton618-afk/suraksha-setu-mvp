@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#087653">
+  <meta name="theme-color" content="#1f5c40">
   <meta name="description" content="A privacy-first, offline-friendly cyber-safety guide for everyday digital payments and messages in India.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; worker-src 'self'; upgrade-insecure-requests">
   <title>Suraksha Setu — Everyday digital safety</title>
@@ -12,41 +12,52 @@
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
-<body>
+<body class="app-shell">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
-  <header class="topbar">
+  <aside class="sidebar" aria-label="Suraksha Setu workspace">
     <a class="brand" href="#home" data-page="home" aria-label="Suraksha Setu home">
       <span class="brand-mark" aria-hidden="true">S</span>
-      <span><strong>Suraksha Setu</strong><small data-i18n="tagline">Everyday digital safety</small></span>
+      <span class="brand-copy"><strong>Suraksha Setu</strong><small>DIGITAL SAFETY</small></span>
     </a>
-    <div class="top-actions">
-      <label class="language-control"><span data-i18n="language">Language</span>
-        <select id="language-select" aria-label="Choose language">
-          <option value="en">English</option>
-          <option value="ta">தமிழ்</option>
-          <option value="hi">हिन्दी</option>
-        </select>
-      </label>
-      <button class="button button-danger button-small" data-page="help" data-i18n="needHelp">Need help now</button>
-    </div>
-  </header>
+    <p class="sidebar-label">WORKSPACE</p>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-item is-active" data-page="home"><span class="nav-icon" aria-hidden="true">▦</span><span data-i18n="navHome">Overview</span></button>
+      <button class="nav-item" data-page="message"><span class="nav-icon" aria-hidden="true">✓</span><span data-i18n="navMessage">Check a message</span></button>
+      <button class="nav-item" data-page="link"><span class="nav-icon" aria-hidden="true">↗</span><span data-i18n="navLink">Check a link</span></button>
+      <button class="nav-item" data-page="qr"><span class="nav-icon" aria-hidden="true">⌗</span><span data-i18n="navQR">QR & UPI safety</span></button>
+      <button class="nav-item" data-page="learn"><span class="nav-icon" aria-hidden="true">▤</span><span data-i18n="navLearn">Learn & practise</span></button>
+    </nav>
+    <div class="sidebar-spacer"></div>
+    <section class="sidebar-help">
+      <strong>Need urgent help?</strong>
+      <p>Find official reporting and support resources.</p>
+      <button class="sidebar-help-button" data-page="help">Get help <span aria-hidden="true">→</span></button>
+    </section>
+    <p class="sidebar-privacy">Private by design · No account needed</p>
+  </aside>
 
-  <nav class="main-nav" aria-label="Main navigation">
-    <button class="nav-item is-active" data-page="home"><span aria-hidden="true">⌂</span><span data-i18n="navHome">Home</span></button>
-    <button class="nav-item" data-page="message"><span aria-hidden="true">▤</span><span data-i18n="navMessage">Check message</span></button>
-    <button class="nav-item" data-page="link"><span aria-hidden="true">↗</span><span data-i18n="navLink">Check a link</span></button>
-    <button class="nav-item" data-page="help"><span aria-hidden="true">!</span><span data-i18n="navHelp">Get help</span></button>
-    <button class="nav-item" data-page="learn"><span aria-hidden="true">✓</span><span data-i18n="navLearn">Practice</span></button>
-  </nav>
-
-  <main id="main" class="page-wrap" tabindex="-1">
-    <div id="app" aria-live="polite" aria-atomic="false"></div>
-  </main>
-
-  <footer class="site-footer">
-    <p><strong data-i18n="rememberLabel">Remember:</strong> <span data-i18n="rememberText">No checker can guarantee that a message, caller or payment is safe.</span></p>
-    <p class="footer-meta"><span>Suraksha Setu · Digital safety · <button class="footer-link" type="button" data-page="privacy" data-i18n="navPrivacy">Privacy & rules</button></span><span data-i18n="localOnly">Checks run on this device. Your message is not uploaded.</span></p>
-  </footer>
+  <div class="workspace">
+    <header class="workspace-topbar">
+      <p class="workspace-caption">Your digital safety workspace</p>
+      <div class="top-actions">
+        <label class="language-control"><span data-i18n="language">Language</span>
+          <select id="language-select" aria-label="Choose language">
+            <option value="en">English</option>
+            <option value="ta">தமிழ்</option>
+            <option value="hi">हिन्दी</option>
+          </select>
+        </label>
+        <span class="privacy-indicator"><span aria-hidden="true">●</span> On-device checks</span>
+      </div>
+    </header>
+    <main id="main" class="page-wrap" tabindex="-1">
+      <div id="app" aria-live="polite" aria-atomic="false"></div>
+    </main>
+    <footer class="site-footer">
+      <p><strong data-i18n="rememberLabel">Remember:</strong> <span data-i18n="rememberText">No checker can guarantee that a message, caller or payment is safe.</span></p>
+      <p class="footer-meta"><span>Suraksha Setu · <button class="footer-link" type="button" data-page="privacy" data-i18n="navPrivacy">Privacy & rules</button></span><span data-i18n="localOnly">Checks run on this device. Your message is not uploaded.</span></p>
+    </footer>
+  </div>
   <noscript><p class="noscript">This app needs JavaScript enabled to run its local checks. No account is required.</p></noscript>
 </body>
 </html>
