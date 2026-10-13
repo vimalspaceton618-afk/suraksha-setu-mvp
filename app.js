@@ -222,13 +222,64 @@ function render() {
   if (page === 'help') document.querySelectorAll('[data-help-type]').forEach((el) => el.classList.toggle('is-selected', el.dataset.helpType === helpType));
 }
 function renderHelp() { return helpContent(); }
+function inspectUpiIntent(raw) {
+  const input = raw.trim();
+  if (!input) return { invalid: true, message: 'Paste a UPI payment URI or QR payload first.' };
+  let uri;
+  try { uri = new URL(input); } catch (_) {
+    return { invalid: true, message: 'This does not look like a complete UPI payment URI. Paste the text payload from a QR scanner.' };
+  }
+  if (uri.protocol.toLowerCase() !== 'upi:' || uri.hostname.toLowerCase() !== 'pay') {
+    return { invalid: true, message: 'This is not a recognised upi://pay payment URI. Do not open it to test it.' };
+  }
+  const params = uri.searchParams;
+  const payee = (params.get('pn') || '').trim();
+  const address = (params.get('pa') || '').trim();
+  const amountRaw = (params.get('am') || '').trim();
+  const currency = (params.get('cu') || 'INR').trim().toUpperCase();
+  const note = (params.get('tn') || '').trim();
+  const issues = [];
+  if (!address) issues.push('No payee UPI ID (pa) was included in the payload.');
+  else if (!/^[^\\s@]+@[^\\s@]+$/.test(address)) issues.push('The payee address does not resemble a standard UPI ID. Verify it in your payment app.');
+  if (!payee) issues.push('No payee display name was included. Check the recipient shown by your UPI app.');
+  if (amountRaw && (!/^\\d+(?:\\.\\d{1,2})?$/.test(amountRaw) || Number(amountRaw) <= 0)) issues.push('The amount field is unusual. Do not approve the payment until the amount is clear.');
+  if (currency !== 'INR') issues.push('The payload declares a currency other than INR. Verify support and details with your payment provider.');
+  if (!amountRaw) issues.push('No amount is specified. Check the final amount in your UPI app before approving.');
+  return {
+    invalid: false,
+    payee: payee || 'Not provided',
+    address: address || 'Not provided',
+    amount: amountRaw ? (currency === 'INR' ? '₹' : currency + ' ') + amountRaw : 'Not specified',
+    note: note || 'No note provided',
+    currency,
+    issues,
+    parameters: [...params.keys()]
+  };
+}
+function renderUpiResult(result) {
+  if (result.invalid) return `<section class="result"><div class="result-head result-high"><span class="result-symbol" aria-hidden="true">!</span><div><h3>Could not inspect this payload</h3><p>${escapeHTML(result.message)}</p></div></div></section>`;
+  const issues = result.issues.length
+    ? `<ul>${result.issues.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul>`
+    : '<p>The basic fields are present, but this does not prove the recipient or payment is legitimate.</p>';
+  return `<section class="result"><div class="result-head ${result.issues.length ? 'result-medium' : 'result-low'}"><span class="result-symbol" aria-hidden="true">${result.issues.length ? '?' : 'i'}</span><div><h3>${result.issues.length ? 'Review before paying' : 'Basic fields extracted'}</h3><p>This is a local read of the text payload only. Nothing was sent and no payment was made.</p></div></div><div class="result-body"><h3>Payment details in payload</h3><dl class="upi-details"><dt>Payee name</dt><dd>${escapeHTML(result.payee)}</dd><dt>UPI ID</dt><dd>${escapeHTML(result.address)}</dd><dt>Amount</dt><dd>${escapeHTML(result.amount)}</dd><dt>Note</dt><dd>${escapeHTML(result.note)}</dd></dl><h3>Checks to review</h3>${issues}<p class="result-top-gap"><strong>Before approving:</strong> compare the recipient name and amount displayed by your own UPI app. Never enter a UPI PIN to receive money.</p></div><p class="result-footnote">Suraksha Setu cannot verify the real identity of a payee or guarantee that a payment is safe.</p></section>`;
+}
 function renderQrSafety() {
-  return `<section class="page-heading"><p class="eyebrow">QR CODE SAFETY</p><h1>Pause before you scan or pay.</h1><p>QR codes can open fake websites or lead to unexpected payment requests. This version cannot decode QR images or use your camera; use these checks before approving a payment.</p></section>
-    <section class="form-card qr-guide"><div class="qr-guide-icon" aria-hidden="true">▦</div><h2>Before scanning a QR code</h2>
-      <div class="qr-rule-list"><article><span>01</span><div><strong>Inspect the QR label</strong><p>Be cautious if a sticker appears to cover another code or looks tampered with.</p></div></article><article><span>02</span><div><strong>Check who gets paid</strong><p>Preview the recipient name and amount inside your UPI app before approving.</p></div></article><article><span>03</span><div><strong>Never use a PIN to receive money</strong><p>Your UPI PIN authorises a payment. Do not enter it to receive a refund or incoming money.</p></div></article><article><span>04</span><div><strong>Stop if details do not match</strong><p>Cancel if the displayed recipient or amount is unexpected.</p></div></article></div>
-      <div class="form-actions"><button class="button" data-page="link">Check destination URL →</button><button class="button button-secondary" data-page="help">Get help</button></div>
+  return `${pageHeading('urlEyebrow','navQR','')}
+    <section class="form-card qr-guide">
+      <div class="tool-label"><span class="card-symbol" aria-hidden="true">▦</span><div><strong>Local UPI payload inspector</strong><p>Reads text you paste. No camera, network request, or payment action.</p></div><span class="local-pill">LOCAL</span></div>
+      <h1>Pause before you scan or pay.</h1>
+      <p>Some QR scanners let you copy the text payload. Paste a UPI payment URI here to review the payee, amount, and note before you decide.</p>
+      <label class="field-label" for="upi-input">UPI payment URI / QR text payload</label>
+      <textarea id="upi-input" maxlength="4096" placeholder="upi://pay?pa=merchant%40bank&pn=Example%20Store&am=250.00&cu=INR" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="upi-help"></textarea>
+      <p id="upi-help" class="help-text">Do not paste passwords, OTPs, or other secrets. This tool only reads a text payload; it does not decode QR images or contact the payment network.</p>
+      <div class="form-actions"><button class="button" data-action="inspect-upi">Inspect payment details</button><button class="button button-secondary" data-action="load-upi-example">Load example</button><button class="button button-secondary" data-action="clear-upi">Clear</button></div>
+      <div id="upi-result" aria-live="polite"></div>
     </section>
-    <section class="section notice"><strong>Important limitation</strong><p>This page is a guidance checklist, not an image scanner. The URL checker only applies limited local patterns and cannot verify a recipient or guarantee that a site is safe.</p></section>`;
+    <section class="section form-card qr-guide"><h2>Before approving any payment</h2>
+      <div class="qr-rule-list"><article><span>01</span><div><strong>Check who gets paid</strong><p>Compare the recipient name shown in your own UPI app with what you expect.</p></div></article><article><span>02</span><div><strong>Check the exact amount</strong><p>Cancel if the amount or recipient is unexpected. Do not rely only on a QR label or screenshot.</p></div></article><article><span>03</span><div><strong>Never use a PIN to receive money</strong><p>Your UPI PIN authorises a payment. You do not need to enter it to receive a refund or incoming money.</p></div></article><article><span>04</span><div><strong>Stop if anyone pressures you</strong><p>Do not install remote-access apps or transfer money to “secure” your account.</p></div></article></div>
+      <div class="form-actions"><button class="button button-secondary" data-page="link">Check destination URL →</button><button class="button button-secondary" data-page="help">Get help</button></div>
+    </section>
+    <section class="section notice"><strong>Important limitation</strong><p>This is not a QR image scanner and cannot authenticate a payee. It does not make or approve payments. Verify all details in your official UPI app.</p></section>`;
 }
 const MESSAGE_RULES = [
   { key: 'reasonOtp', points: 2, re: /\b(?:otp|one[- ]time password|upi\s*pin|pin|password|verification code|passcode)\b/i },
@@ -336,6 +387,20 @@ document.addEventListener('click', (event) => {
     out.innerHTML = renderUrlResult(scanUrl(text));
   }
   if (action === 'clear-link') { document.getElementById('url-input').value=''; document.getElementById('link-result').replaceChildren(); document.getElementById('url-input').focus(); }
+  if (action === 'inspect-upi') {
+    const field = document.getElementById('upi-input');
+    const out = document.getElementById('upi-result');
+    out.innerHTML = renderUpiResult(inspectUpiIntent(field.value));
+  }
+  if (action === 'load-upi-example') {
+    document.getElementById('upi-input').value = 'upi://pay?pa=merchant%40bank&pn=Example%20Store&am=250.00&cu=INR&tn=Sample%20purchase';
+    document.getElementById('upi-input').focus();
+  }
+  if (action === 'clear-upi') {
+    document.getElementById('upi-input').value = '';
+    document.getElementById('upi-result').replaceChildren();
+    document.getElementById('upi-input').focus();
+  }
   if (action === 'quiz-answer' && !quizAnswered) {
     const selected = Number(actionButton.dataset.answer);
     const question = QUESTIONS[quizIndex];
