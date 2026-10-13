@@ -196,7 +196,7 @@ function renderLearn() {
     <section class="learning-banner"><div><p class="eyebrow">SMALL STEPS. BIG PROTECTION.</p><h2>Be aware. Be safe.</h2><p>Practice how to respond to common scam attempts. Your answers stay in this session.</p></div><div class="learning-badge" aria-hidden="true">✓</div></section>
     <section class="section form-card quiz-card">
       <div class="quiz-progress-head"><span class="eyebrow">\${t('quizQuestion')} \${quizIndex+1} / \${QUESTIONS.length}</span><strong>\${progress}%</strong></div>
-      <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="\${progress}"><span style="width:\${progress}%"></span></div>
+      <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="\${progress}"><span class="progress-fill progress-\${progress}"></span></div>
       <h2>\${t(q.q)}</h2>
       <div id="quiz-options">\${q.a.map((key, i)=>\`<button class="quiz-option" data-action="quiz-answer" data-answer="\${i}" \${quizAnswered?'disabled':''}>\${t(key)}<span aria-hidden="true">→</span></button>\`).join('')}</div>
       \${quizAnswered?\`<div class="quiz-feedback" role="status"><strong>\${lang==='ta'?'விளக்கம்':lang==='hi'?'समझें':'Why this matters'}:</strong> \${t(q.why)}<p>\${t('quizScore')}: \${quizScore} / \${quizIndex+1}</p><button class="button" data-action="quiz-next">\${quizIndex===QUESTIONS.length-1?t('quizDone'):t('quizNext')} →</button></div>\`:''}
