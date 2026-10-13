@@ -1,0 +1,13 @@
+{
+  "name": "suraksha-setu-api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Optional zero-dependency API scaffold for Suraksha Setu",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}
