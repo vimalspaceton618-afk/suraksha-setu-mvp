@@ -3,54 +3,8 @@
 /* Suraksha Setu MVP: all checks are deterministic, local-only heuristics. No AI, analytics, or network API. */
 const TEXT = {
   en: {
-    skip:'Skip to content', tagline:'Everyday digital safety', language:'Language', needHelp:
-    navQR:'QR safety',
-    quickActionsTitle:'\${t('quickActionsTitle')}',
-    quickActionsLead:'\${t('quickActionsLead')}',
-    qrCardTitle:'QR code safety',
-    qrCardDesc:'\${t('qrCardDesc')}',
-    trustLocal:'✓ Local checks',
-    trustNoAccount:'✓ No account',
-    trustLanguages:'✓ English · தமிழ் · हिन्दी',
-    privacyBannerEyebrow:'BUILT AROUND YOUR PRIVACY',
-    privacyBannerAction:'Read privacy rules',
-    messageLocalTitle:'Private, on-device check',
-    messageLocalLead:'No message is uploaded by this checker.',
-    linkLocalTitle:'Inspect the text of a URL',
-    linkLocalLead:'The address is analysed locally and is not opened.',
-    linkTipsTitle:'Quick checks',
-    linkTipSpelling:'Look-alike spelling',
-    linkTipHyphens:'Unexpected hyphens',
-    linkTipShorteners:'Shortened URLs',
-    helpEmergencyTitle:'Financial cyber fraud in India?',
-    helpEmergencyLead:'\${t('helpEmergencyLead')}',
-    helpChooseTitle:'Find the next safe step',
-    helpChooseLead:'You can change your selection at any time.',
-    officialSupport:'OFFICIAL SUPPORT',
-    suspiciousIdentifiersDesc:'Report suspicious identifiers',
-    learningBannerEyebrow:'SMALL STEPS. BIG PROTECTION.',
-    learningBannerTitle:'Be aware. Be safe.',
-    learningBannerLead:'\${t('learningBannerLead')}',
-    quizProgress:'Quiz progress',
-    privacyIntroTitle:'Privacy by design',
-    privacyIntroLead:'\${t('privacyIntroLead')}',
-    privacyPreLaunchTitle:'Before public launch',
-    privacyPreLaunchDesc:'\${t('privacyPreLaunchDesc')}',
-    qrTitleEyebrow:'QR CODE SAFETY',
-    qrTitle:'Pause before you scan or pay.',
-    qrLead:'\${t('qrLead')}',
-    qrBeforeTitle:'Before scanning a QR code',
-    qrR1Title:'Inspect the QR label',
-    qrR1Body:'\${t('qrR1Body')}',
-    qrR2Title:'Check who gets paid',
-    qrR2Body:'\${t('qrR2Body')}',
-    qrR3Title:'Never use a PIN to receive money',
-    qrR3Body:'\${t('qrR3Body')}',
-    qrR4Title:'Stop if details do not match',
-    qrR4Body:'\${t('qrR4Body')}',
-    qrLimitTitle:'Important limitation',
-    qrLimitBody:'\${t('qrLimitBody')}','Need help now',
-    navHome:'Home', navMessage:'Check message', navLink:'Check a link', navHelp:'Get help', navLearn:'Practice', navPrivacy:'Privacy & rules',
+    skip:'Skip to content', tagline:'Everyday digital safety', language:'Language', needHelp:'Need help now',
+    navHome:'Home', navMessage:'Check message', navLink:'Check a link', navHelp:'Get help', navLearn:'Practice', navPrivacy:'Privacy & rules', navQR:'QR safety',
     rememberLabel:'Remember:', rememberText:'No checker can guarantee that a message, caller or payment is safe.', localOnly:'Checks run on this device. Your message is not uploaded.',
     homeEyebrow:'DIGITAL SAFETY, MADE PRACTICAL', homeTitle:'Pause. Check. Then decide.', homeLead:'A simple place to check suspicious messages and links, learn safer payment habits, and find official help when something goes wrong.',
     checkMessage:'Check a message', checkMessageDesc:'Paste suspicious text. It stays on this device.', checkLink:'Check a link', checkLinkDesc:'Inspect the address without opening the website.',
@@ -82,53 +36,7 @@ const TEXT = {
     noMessageRules:'No common warning rule matched.', noUrlRules:'No obvious technical warning rule matched.', copyReport:'Copy checklist', checklistCopied:'Checklist copied, if clipboard permission is available.', installNote:'Tip: use your browser menu and choose “Install app” or “Add to Home screen” when available.',
   },
   ta: {
-    skip:'உள்ளடக்கத்திற்குச் செல்லவும்', tagline:'அன்றாட டிஜிட்டல் பாதுகாப்பு', language:'மொழி', needHelp:
-    navQR:'QR பாதுகாப்பு',
-    quickActionsTitle:'டிஜிட்டல் பாதுகாப்பிற்கு எதைச் சரிபார்க்க வேண்டும்?',
-    quickActionsLead:'ஒரு கருவியைத் தேர்ந்தெடுக்கவும். உரைச் சரிபார்ப்பு இந்த உலாவியிலேயே நடக்கும்.',
-    qrCardTitle:'QR குறியீடு பாதுகாப்பு',
-    qrCardDesc:'UPI பணம் செலுத்தும் முன் பாதுகாப்பான பழக்கங்கள் மற்றும் சரிபார்ப்புகள்.',
-    trustLocal:'✓ சாதனத்திலேயே சரிபார்ப்பு',
-    trustNoAccount:'✓ கணக்கு தேவையில்லை',
-    trustLanguages:'✓ ஆங்கிலம் · தமிழ் · இந்தி',
-    privacyBannerEyebrow:'தனியுரிமையை முதன்மையாகக் கொண்டு உருவாக்கப்பட்டது',
-    privacyBannerAction:'தனியுரிமை விதிகளைப் படிக்கவும்',
-    messageLocalTitle:'உங்கள் சாதனத்திலேயே தனிப்பட்ட சரிபார்ப்பு',
-    messageLocalLead:'இந்தச் சரிபார்ப்பு உங்கள் செய்தியைப் பதிவேற்றாது.',
-    linkLocalTitle:'இணைய முகவரியைச் சரிபார்க்கவும்',
-    linkLocalLead:'முகவரி சாதனத்திலேயே ஆய்வு செய்யப்படும்; இணையதளம் திறக்கப்படாது.',
-    linkTipsTitle:'விரைவான சரிபார்ப்புகள்',
-    linkTipSpelling:'ஒத்த எழுத்துக்களைக் கொண்ட முகவரி',
-    linkTipHyphens:'எதிர்பாராத ஹைபன்கள்',
-    linkTipShorteners:'சுருக்கப்பட்ட இணைப்புகள்',
-    helpEmergencyTitle:'இந்தியாவில் இணைய நிதி மோசடியா?',
-    helpEmergencyLead:'முடிந்தவரை விரைவாக 1930-ஐ அழைத்து, உங்கள் வங்கி அல்லது பணப்பரிவர்த்தனை செயலியை உடனே தொடர்புகொள்ளுங்கள்.',
-    helpChooseTitle:'அடுத்த பாதுகாப்பான படியைக் கண்டறியுங்கள்',
-    helpChooseLead:'உங்கள் தேர்வை எப்போது வேண்டுமானாலும் மாற்றலாம்.',
-    officialSupport:'அதிகாரப்பூர்வ உதவி',
-    suspiciousIdentifiersDesc:'சந்தேகமான அடையாளங்களைப் புகாரளிக்கவும்',
-    learningBannerEyebrow:'சிறிய படிகள். பெரிய பாதுகாப்பு.',
-    learningBannerTitle:'விழிப்புடன் இருங்கள். பாதுகாப்பாக இருங்கள்.',
-    learningBannerLead:'பொதுவான மோசடிகளுக்கு எப்படிப் பதிலளிப்பது என்று பயிற்சி செய்யுங்கள். உங்கள் பதில்கள் இந்த அமர்விலேயே இருக்கும்.',
-    quizProgress:'வினாடி வினா முன்னேற்றம்',
-    privacyIntroTitle:'வடிவமைப்பிலேயே தனியுரிமை',
-    privacyIntroLead:'Suraksha Setu ஒரு முன்பக்க முன்மாதிரி. சரிபார்க்கும் உரை உங்கள் உலாவியில் செயலாக்கப்படும்; இந்தச் சரிபார்ப்பு அதை சேவையகத்திற்கு அனுப்பாது.',
-    privacyPreLaunchTitle:'பொதுவெளியில் வெளியிடுவதற்கு முன்',
-    privacyPreLaunchDesc:'இந்த முன்மாதிரிக்கு சுயாதீன பாதுகாப்பு ஆய்வு, மொழிபெயர்க்கப்பட்ட பயனர் சோதனை மற்றும் பாதுகாப்பு குறைபாடுகளை தெரிவிக்கும் தொடர்பு தேவை.',
-    qrTitleEyebrow:'QR குறியீடு பாதுகாப்பு',
-    qrTitle:'ஸ்கேன் செய்வதற்கு அல்லது பணம் செலுத்துவதற்கு முன் நிறுத்துங்கள்.',
-    qrLead:'QR குறியீடுகள் போலி இணையதளங்களைத் திறக்கலாம் அல்லது எதிர்பாராத பணக் கோரிக்கைகளுக்கு வழிவகுக்கலாம். இந்தப் பதிப்பு QR படத்தைப் படிக்கவோ கேமராவைப் பயன்படுத்தவோ முடியாது; பணம் செலுத்துவதற்கு முன் இந்தச் சரிபார்ப்புகளைப் பின்பற்றுங்கள்.',
-    qrBeforeTitle:'QR குறியீட்டை ஸ்கேன் செய்வதற்கு முன்',
-    qrR1Title:'QR லேபிளைப் பாருங்கள்',
-    qrR1Body:'ஒரு ஸ்டிக்கர் வேறொரு குறியீட்டை மூடியிருந்தாலோ மாற்றப்பட்டதுபோல் இருந்தாலோ எச்சரிக்கையாக இருங்கள்.',
-    qrR2Title:'பணம் யாருக்குச் செல்கிறது என்பதைச் சரிபார்க்கவும்',
-    qrR2Body:'ஒப்புதல் அளிக்கும் முன் UPI செயலியில் பெறுநரின் பெயர் மற்றும் தொகையைப் பாருங்கள்.',
-    qrR3Title:'பணம் பெற PIN தேவையில்லை',
-    qrR3Body:'UPI PIN பணம் செலுத்த அனுமதிக்கிறது. பணம் அல்லது பணத்திருப்பைப் பெற PIN உள்ளிட வேண்டாம்.',
-    qrR4Title:'விவரங்கள் பொருந்தாவிட்டால் நிறுத்துங்கள்',
-    qrR4Body:'பெறுநர் அல்லது தொகை எதிர்பாராததாக இருந்தால் ரத்துசெய்யுங்கள்.',
-    qrLimitTitle:'முக்கிய வரம்பு',
-    qrLimitBody:'இந்தப் பக்கம் வழிகாட்டும் பட்டியல் மட்டுமே; பட ஸ்கேனர் அல்ல. URL சரிபார்ப்பு சில உள்ளூர் விதிகளை மட்டுமே பயன்படுத்துகிறது; பெறுநரை உறுதிப்படுத்தவோ தளத்தின் பாதுகாப்புக்கு உத்தரவாதம் அளிக்கவோ முடியாது.','இப்போது உதவி தேவை', navHome:'முகப்பு', navMessage:'செய்தியைச் சரிபார்', navLink:'இணைப்பைச் சரிபார்', navHelp:'உதவி பெறுக', navLearn:'பயிற்சி', navPrivacy:'தனியுரிமை விதிகள்', rememberLabel:'நினைவில் கொள்ளுங்கள்:', rememberText:'எந்தச் சரிபார்ப்பும் செய்தி, அழைப்பாளர் அல்லது பணப்பரிவர்த்தனை பாதுகாப்பானது என்று உறுதி செய்ய முடியாது.', localOnly:'சரிபார்ப்பு உங்கள் சாதனத்திலேயே நடைபெறும். செய்தி பதிவேற்றப்படாது.',
+    skip:'உள்ளடக்கத்திற்குச் செல்லவும்', tagline:'அன்றாட டிஜிட்டல் பாதுகாப்பு', language:'மொழி', needHelp:'இப்போது உதவி தேவை', navHome:'முகப்பு', navMessage:'செய்தியைச் சரிபார்', navLink:'இணைப்பைச் சரிபார்', navHelp:'உதவி பெறுக', navLearn:'பயிற்சி', navPrivacy:'தனியுரிமை விதிகள்', navQR:'QR பாதுகாப்பு', rememberLabel:'நினைவில் கொள்ளுங்கள்:', rememberText:'எந்தச் சரிபார்ப்பும் செய்தி, அழைப்பாளர் அல்லது பணப்பரிவர்த்தனை பாதுகாப்பானது என்று உறுதி செய்ய முடியாது.', localOnly:'சரிபார்ப்பு உங்கள் சாதனத்திலேயே நடைபெறும். செய்தி பதிவேற்றப்படாது.',
     homeEyebrow:'எளிமையான டிஜிட்டல் பாதுகாப்பு', homeTitle:'நிறுத்துங்கள். சரிபாருங்கள். பிறகு முடிவெடுங்கள்.', homeLead:'சந்தேகமான செய்திகள் மற்றும் இணைப்புகளைச் சரிபார்க்கவும், பாதுகாப்பான பணப்பரிவர்த்தனை பழக்கங்களைக் கற்கவும், சிக்கல் ஏற்பட்டால் அதிகாரப்பூர்வ உதவியைப் பெறவும் ஒரு எளிய இடம்.', checkMessage:'செய்தியைச் சரிபார்', checkMessageDesc:'சந்தேகமான உரையை ஒட்டுங்கள். இது இந்தச் சாதனத்திலேயே இருக்கும்.', checkLink:'இணைப்பைச் சரிபார்', checkLinkDesc:'இணையதளத்தைத் திறக்காமல் முகவரியைப் பாருங்கள்.', getHelp:'எனக்கு உதவி தேவை', getHelpDesc:'பணம் அல்லது தனிப்பட்ட தகவல் ஆபத்தில் இருந்தால் அடுத்த படியைக் கண்டறியுங்கள்.', practiceTitle:'மோசடிகளை அடையாளம் காணப் பழகுங்கள்', practiceDesc:'சிறிய நிகழ்வுகளை முயற்சிக்கவும். மதிப்பெண் அல்லது தரவு பகிரப்படாது.', privacyTitle:'தனியுரிமையே முதன்மை', privacyDesc:'கணக்கு இல்லை, விளம்பரக் கண்காணிப்பு இல்லை, AI இல்லை; நீங்கள் சரிபார்க்கும் உரை பதிவேற்றப்படாது.', homeSafetyTitle:'நினைவில் கொள்ள வேண்டிய மூன்று விதிகள்', rule1Title:'ரகசியங்களைப் பகிர வேண்டாம்', rule1:'உங்களைத் தொடர்புகொள்ளும் ஒருவரிடம் OTP, UPI PIN, கடவுச்சொல் அல்லது திரைப் பகிர்வு அணுகலை ஒருபோதும் பகிர வேண்டாம்.', rule2Title:'பணம் பெற PIN தேவையில்லை', rule2:'பணம் பெற QR ஸ்கேன் அல்லது UPI PIN தேவையில்லை. யாராவது அப்படிச் சொன்னால் நிறுத்துங்கள்.', rule3Title:'அதிகாரிகள் “டிஜிட்டல் கைது” செய்ய மாட்டார்கள்', rule3:'போலீஸ், CBI, ED, நீதிமன்றம் அல்லது கூரியர் அதிகாரி என்று மிரட்டும் அழைப்பை முடித்து, தனியாகச் சரிபாருங்கள்.', homeNoteTitle:'இந்தப் பதிப்பால் என்ன செய்ய முடியும்?', homeNote:'இது ஆரம்ப முன்மாதிரி. உரை மற்றும் இணைப்புகளில் சில எச்சரிக்கை அடையாளங்களைச் சாதனத்திலேயே சரிபார்க்கும். அழைப்புகள், WhatsApp, வங்கி செயலிகள் அல்லது பணப்பரிவர்த்தனைகளை கண்காணிக்காது; இணைப்பு பாதுகாப்பானது என்றும் நிரூபிக்காது.',
     messageEyebrow:'செய்தியைச் சாதனத்திலேயே சரிபார்', messageTitle:'சந்தேகமான செய்தியைச் சரிபார்க்கவும்', messageLead:'கீழே செய்தியை ஒட்டுங்கள். வெளிப்படையான விதிகள் மூலம் சில பொதுவான எச்சரிக்கை அறிகுறிகளைச் சரிபார்க்கும். உரை எங்கும் அனுப்பப்படாது.', messageLabel:'செய்தி உரை', messagePlaceholder:'SMS, WhatsApp, மின்னஞ்சல் அல்லது அழைப்பாளர் கூறியதை இங்கே ஒட்டுங்கள்…', messageHelp:'கடவுச்சொல், OTP, முழுக் கணக்கு எண் அல்லது ரகசியங்களை ஒட்ட வேண்டாம். இந்தச் சரிபார்ப்பு உத்தரவாதமல்ல.', scanButton:'எச்சரிக்கை அறிகுறிகளைச் சரிபார்', clearButton:'உரையை அழி', exampleButton:'உதாரணத்தை ஏற்று',
     urlEyebrow:'இணைப்பைச் சாதனத்திலேயே சரிபார்', urlTitle:'திறப்பதற்கு முன் இணைப்பைப் பாருங்கள்', urlLead:'முகவரியை உரையாக உள்ளிடுங்கள். இந்தக் கருவி இணையதளத்தைத் திறக்காது; உண்மையான உரிமையாளரையும் சரிபார்க்காது.', urlLabel:'இணையதள முகவரி', urlPlaceholder:'example.com அல்லது https://example.com/path', urlHelp:'இணைப்பை நகலெடுக்க அதைத் திறக்க வேண்டாம். செய்தியில் காட்டப்படும் முகவரியை ஒட்டலாம்.', checkLinkButton:'முகவரியைச் சரிபார்', clearLinkButton:'முகவரியை அழி',
@@ -144,53 +52,7 @@ const TEXT = {
     reasonOtp:'OTP, PIN, கடவுச்சொல் அல்லது சரிபார்ப்புக் குறியீட்டைச் செய்தி குறிப்பிடுகிறது.', reasonUrgency:'அவசர காலக்கெடு அல்லது கணக்கு முடக்கப்படும் என்ற மிரட்டல் உள்ளது.', reasonAuthority:'போலீஸ், நீதிமன்றம் அல்லது அதிகாரி போல நடிக்கலாம்.', reasonRemote:'தொலைநிலை அணுகல், திரைப் பகிர்வு அல்லது செயலி நிறுவலைக் குறிப்பிடுகிறது.', reasonLink:'செய்தியில் இணைய இணைப்பு உள்ளது.', reasonPayment:'பணம், பரிமாற்றம், QR ஸ்கேன் அல்லது கட்டண ஒப்புதலைக் கேட்கிறது.', reasonPrize:'பரிசு, பணத்திருப்பு, வேலை அல்லது மிக அதிக லாபம் என்று கூறுகிறது.', reasonHttp:'HTTPS-க்கு பதிலாக பாதுகாப்பற்ற HTTP உள்ளது.', reasonPuny:'சர்வதேச எழுத்துரு/punycode domain உள்ளது. எழுத்துப்பிழையை கவனமாகப் பாருங்கள்.', reasonIp:'பழக்கமான domain-க்கு பதில் நேரடி IP முகவரி உள்ளது.', reasonShort:'இணைப்பு குறுக்கி சேவை இறுதி முகவரியை மறைக்கலாம்.', reasonCred:'முகவரியில் host-க்கு முன் username அல்லது password உள்ளது.', reasonPort:'வழக்கமற்ற port எண் உள்ளது.', reasonBrand:'வேறு domain-இல் அறிமுகமான brand பெயர் உள்ளது. இது மட்டும் மோசடி ஆதாரம் அல்ல; தனியாகச் சரிபாருங்கள்.', reasonLong:'பல subdomain அடுக்குகள் உள்ளன. உண்மையான registered domain-ஐ உறுதிப்படுத்துங்கள்.', reasonHyphen:'brand போலத் தோன்றும் பெயரில் கூடுதல் hyphen உள்ளது.', noMessageRules:'பொதுவான எச்சரிக்கை விதி பொருந்தவில்லை.', noUrlRules:'தெளிவான தொழில்நுட்ப எச்சரிக்கை விதி பொருந்தவில்லை.', copyReport:'சரிபார்ப்பு பட்டியலை நகலெடு', checklistCopied:'clipboard அனுமதி இருந்தால் பட்டியல் நகலெடுக்கப்பட்டது.', installNote:'குறிப்பு: உலாவி மெனுவில் “Install app” அல்லது “Add to Home screen” தேர்வு செய்யலாம்.'
   },
   hi: {
-    skip:'मुख्य सामग्री पर जाएँ', tagline:'रोज़मर्रा की डिजिटल सुरक्षा', language:'भाषा', needHelp:
-    navQR:'QR सुरक्षा',
-    quickActionsTitle:'आप डिजिटल रूप से सुरक्षित रहने के लिए क्या जाँचना चाहते हैं?',
-    quickActionsLead:'एक टूल चुनें। संदेश की जाँच इसी ब्राउज़र में होती है।',
-    qrCardTitle:'QR कोड सुरक्षा',
-    qrCardDesc:'UPI भुगतान की पुष्टि करने से पहले सुरक्षित आदतें और जाँच।',
-    trustLocal:'✓ स्थानीय जाँच',
-    trustNoAccount:'✓ खाता नहीं चाहिए',
-    trustLanguages:'✓ अंग्रेज़ी · तमिल · हिंदी',
-    privacyBannerEyebrow:'आपकी गोपनीयता को ध्यान में रखकर बनाया गया',
-    privacyBannerAction:'गोपनीयता नियम पढ़ें',
-    messageLocalTitle:'आपके डिवाइस पर निजी जाँच',
-    messageLocalLead:'यह जाँच संदेश को अपलोड नहीं करती।',
-    linkLocalTitle:'URL के टेक्स्ट की जाँच करें',
-    linkLocalLead:'पते का विश्लेषण इसी डिवाइस पर होता है; वेबसाइट नहीं खुलती।',
-    linkTipsTitle:'त्वरित जाँच',
-    linkTipSpelling:'मिलती-जुलती वर्तनी',
-    linkTipHyphens:'अनपेक्षित हाइफ़न',
-    linkTipShorteners:'छोटे किए गए URL',
-    helpEmergencyTitle:'भारत में ऑनलाइन वित्तीय धोखाधड़ी हुई?',
-    helpEmergencyLead:'जितनी जल्दी हो सके 1930 पर कॉल करें और तुरंत अपने बैंक या भुगतान ऐप से संपर्क करें।',
-    helpChooseTitle:'अगला सुरक्षित कदम चुनें',
-    helpChooseLead:'आप अपना चयन कभी भी बदल सकते हैं।',
-    officialSupport:'आधिकारिक सहायता',
-    suspiciousIdentifiersDesc:'संदिग्ध पहचान की रिपोर्ट करें',
-    learningBannerEyebrow:'छोटे कदम। बड़ी सुरक्षा।',
-    learningBannerTitle:'सतर्क रहें। सुरक्षित रहें।',
-    learningBannerLead:'आम घोटालों का जवाब देने का अभ्यास करें। आपके जवाब इसी सत्र में रहते हैं।',
-    quizProgress:'क्विज़ प्रगति',
-    privacyIntroTitle:'डिज़ाइन से ही गोपनीयता',
-    privacyIntroLead:'Suraksha Setu एक फ्रंट-एंड प्रोटोटाइप है। जाँचा गया टेक्स्ट आपके ब्राउज़र में प्रोसेस होता है; यह चेकर उसे सर्वर पर नहीं भेजता।',
-    privacyPreLaunchTitle:'सार्वजनिक लॉन्च से पहले',
-    privacyPreLaunchDesc:'इस प्रोटोटाइप को स्वतंत्र सुरक्षा समीक्षा, अनुवादित उपयोगकर्ता परीक्षण और सुरक्षा समस्या रिपोर्ट करने के संपर्क की ज़रूरत है।',
-    qrTitleEyebrow:'QR कोड सुरक्षा',
-    qrTitle:'स्कैन करने या भुगतान करने से पहले रुकें।',
-    qrLead:'QR कोड नकली वेबसाइट खोल सकते हैं या अनचाहे भुगतान अनुरोध तक ले जा सकते हैं। यह संस्करण QR तस्वीर नहीं पढ़ सकता और कैमरा इस्तेमाल नहीं करता; भुगतान की पुष्टि से पहले ये जाँच करें।',
-    qrBeforeTitle:'QR कोड स्कैन करने से पहले',
-    qrR1Title:'QR स्टिकर जाँचें',
-    qrR1Body:'यदि स्टिकर किसी दूसरे कोड के ऊपर लगा हो या छेड़छाड़ दिखे तो सावधान रहें।',
-    qrR2Title:'भुगतान पाने वाले की जाँच करें',
-    qrR2Body:'मंज़ूरी देने से पहले UPI ऐप में प्राप्तकर्ता का नाम और राशि देखें।',
-    qrR3Title:'पैसे पाने के लिए PIN नहीं चाहिए',
-    qrR3Body:'UPI PIN भुगतान अधिकृत करता है। पैसा या रिफंड पाने के लिए PIN न डालें।',
-    qrR4Title:'विवरण न मिलें तो रुकें',
-    qrR4Body:'यदि प्राप्तकर्ता या राशि अनपेक्षित हो तो भुगतान रद्द करें।',
-    qrLimitTitle:'महत्वपूर्ण सीमा',
-    qrLimitBody:'यह पेज मार्गदर्शिका है, इमेज स्कैनर नहीं। URL चेकर कुछ स्थानीय नियमों का उपयोग करता है; यह प्राप्तकर्ता की पुष्टि या वेबसाइट की सुरक्षा की गारंटी नहीं देता।','अभी मदद चाहिए', navHome:'होम', navMessage:'मैसेज जाँचें', navLink:'लिंक जाँचें', navHelp:'मदद लें', navLearn:'अभ्यास', navPrivacy:'गोपनीयता और नियम', rememberLabel:'याद रखें:', rememberText:'कोई जाँच यह गारंटी नहीं दे सकती कि संदेश, कॉल करने वाला या भुगतान सुरक्षित है।', localOnly:'जाँच इसी डिवाइस पर होती है। आपका संदेश अपलोड नहीं होता।',
+    skip:'मुख्य सामग्री पर जाएँ', tagline:'रोज़मर्रा की डिजिटल सुरक्षा', language:'भाषा', needHelp:'अभी मदद चाहिए', navHome:'होम', navMessage:'मैसेज जाँचें', navLink:'लिंक जाँचें', navHelp:'मदद लें', navLearn:'अभ्यास', navPrivacy:'गोपनीयता और नियम', navQR:'QR सुरक्षा', rememberLabel:'याद रखें:', rememberText:'कोई जाँच यह गारंटी नहीं दे सकती कि संदेश, कॉल करने वाला या भुगतान सुरक्षित है।', localOnly:'जाँच इसी डिवाइस पर होती है। आपका संदेश अपलोड नहीं होता।',
     homeEyebrow:'आसान डिजिटल सुरक्षा', homeTitle:'रुकें। जाँचें। फिर फैसला करें।', homeLead:'संदिग्ध संदेश और लिंक जाँचने, सुरक्षित भुगतान की आदतें सीखने और समस्या होने पर आधिकारिक मदद पाने की आसान जगह।', checkMessage:'संदेश जाँचें', checkMessageDesc:'संदिग्ध टेक्स्ट पेस्ट करें। वह इसी डिवाइस पर रहता है।', checkLink:'लिंक जाँचें', checkLinkDesc:'वेबसाइट खोले बिना पता देखें।', getHelp:'मुझे मदद चाहिए', getHelpDesc:'पैसे या निजी जानकारी खतरे में हो तो अगला कदम जानें।', practiceTitle:'घोटाले पहचानने का अभ्यास', practiceDesc:'छोटे उदाहरण आज़माएँ। कोई स्कोर या डेटा साझा नहीं होता।', privacyTitle:'गोपनीयता सबसे पहले', privacyDesc:'कोई खाता नहीं, विज्ञापन ट्रैकिंग नहीं, AI नहीं और जाँचा गया टेक्स्ट अपलोड नहीं होता।', homeSafetyTitle:'याद रखने के तीन नियम', rule1Title:'गुप्त जानकारी साझा न करें', rule1:'किसी भी अनजान व्यक्ति को OTP, UPI PIN, पासवर्ड या स्क्रीन साझा करने की अनुमति न दें।', rule2Title:'पैसे पाने के लिए PIN नहीं चाहिए', rule2:'पैसे पाने के लिए QR स्कैन या UPI PIN की ज़रूरत नहीं होती। कोई ऐसा कहे तो रुकें।', rule3Title:'अधिकारी “डिजिटल अरेस्ट” नहीं करते', rule3:'पुलिस, CBI, ED, अदालत या कूरियर अधिकारी बनकर धमकाने वाली कॉल काटें और खुद आधिकारिक तरीके से जाँचें।', homeNoteTitle:'यह संस्करण क्या कर सकता है और क्या नहीं', homeNote:'यह शुरुआती प्रोटोटाइप है। यह टेक्स्ट और लिंक के कुछ संकेत डिवाइस पर जाँचता है। यह कॉल, WhatsApp, बैंक ऐप या लेनदेन की निगरानी नहीं करता और लिंक को सुरक्षित साबित नहीं कर सकता।',
     messageEyebrow:'डिवाइस पर संदेश जाँच', messageTitle:'संदिग्ध संदेश जाँचें', messageLead:'नीचे संदेश पेस्ट करें। सरल और स्पष्ट नियम कुछ आम चेतावनी संकेत खोजेंगे। आपका टेक्स्ट कहीं नहीं भेजा जाता।', messageLabel:'संदेश का टेक्स्ट', messagePlaceholder:'SMS, WhatsApp, ईमेल या कॉल करने वाले का लिखा दावा यहाँ पेस्ट करें…', messageHelp:'पासवर्ड, OTP, पूरा खाता नंबर या अन्य गुप्त जानकारी न डालें। यह जाँच गारंटी नहीं है।', scanButton:'चेतावनी संकेत जाँचें', clearButton:'टेक्स्ट मिटाएँ', exampleButton:'उदाहरण भरें',
     urlEyebrow:'डिवाइस पर लिंक जाँच', urlTitle:'खोलने से पहले लिंक देखें', urlLead:'पता टेक्स्ट के रूप में डालें। यह टूल वेबसाइट नहीं खोलता और असली मालिक की पुष्टि नहीं करता।', urlLabel:'वेबसाइट का पता', urlPlaceholder:'example.com या https://example.com/path', urlHelp:'लिंक कॉपी करने के लिए उसे खोलें नहीं। संदेश में दिख रहा पता पेस्ट कर सकते हैं।', checkLinkButton:'पते की जाँच करें', clearLinkButton:'पता मिटाएँ',
@@ -238,17 +100,17 @@ function pageHeading(eyebrow, title, lead) { return `<div class="page-heading"><
 function cardLink(icon, title, desc, target) { return `<button type="button" class="action-card" data-page="${target}"><span class="card-symbol" aria-hidden="true">${icon}</span><strong>${t(title)}</strong><span>${t(desc)}</span></button>`; }
 
 function renderHome() {
-  return \`
+  return `
     <section class="hero hero-modern" aria-labelledby="home-title">
       <div class="hero-copy">
-        <p class="eyebrow">\${t('homeEyebrow')}</p>
-        <h1 id="home-title">\${t('homeTitle')}</h1>
-        <p class="lead">\${t('homeLead')}</p>
+        <p class="eyebrow">${t('homeEyebrow')}</p>
+        <h1 id="home-title">${t('homeTitle')}</h1>
+        <p class="lead">${t('homeLead')}</p>
         <div class="button-row">
-          <button class="button" data-page="message"><span aria-hidden="true">▤</span> \${t('checkMessage')} <span aria-hidden="true">→</span></button>
-          <button class="button button-secondary" data-page="help"><span aria-hidden="true">☎</span> \${t('getHelp')}</button>
+          <button class="button" data-page="message"><span aria-hidden="true">▤</span> ${t('checkMessage')} <span aria-hidden="true">→</span></button>
+          <button class="button button-secondary" data-page="help"><span aria-hidden="true">☎</span> ${t('getHelp')}</button>
         </div>
-        <div class="trust-row"><span>\${t('trustLocal')}</span><span>\${t('trustNoAccount')}</span><span>\${t('trustLanguages')}</span></div>
+        <div class="trust-row"><span>✓ Local checks</span><span>✓ No account</span><span>✓ English · தமிழ் · हिन्दी</span></div>
       </div>
       <div class="hero-art" aria-label="Shield illustration representing digital safety" role="img">
         <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
@@ -259,58 +121,58 @@ function renderHome() {
     <section class="section" aria-labelledby="quick-actions">
       <div class="section-head"><div><p class="eyebrow">01 / QUICK ACTIONS</p><h2 id="quick-actions">How can we help you stay safe?</h2><p>Choose a tool. Text checks run in this browser.</p></div></div>
       <div class="grid grid-3 tools-grid">
-        \${cardLink('▤','checkMessage','checkMessageDesc','message')}
-        \${cardLink('↗','checkLink','checkLinkDesc','link')}
-        <button type="button" class="action-card" data-page="qr"><span class="card-symbol" aria-hidden="true">▦</span><strong>\${t('qrCardTitle')}</strong><span>Safer UPI habits and checks before approving a payment.</span><span class="tool-arrow" aria-hidden="true">→</span></button>
-        \${cardLink('☎','getHelp','getHelpDesc','help')}
-        \${cardLink('✦','practiceTitle','practiceDesc','learn')}
-        \${cardLink('▣','privacyTitle','privacyDesc','privacy')}
+        ${cardLink('▤','checkMessage','checkMessageDesc','message')}
+        ${cardLink('↗','checkLink','checkLinkDesc','link')}
+        <button type="button" class="action-card" data-page="qr"><span class="card-symbol" aria-hidden="true">▦</span><strong>QR code safety</strong><span>Safer UPI habits and checks before approving a payment.</span><span class="tool-arrow" aria-hidden="true">→</span></button>
+        ${cardLink('☎','getHelp','getHelpDesc','help')}
+        ${cardLink('✦','practiceTitle','practiceDesc','learn')}
+        ${cardLink('▣','privacyTitle','privacyDesc','privacy')}
       </div>
     </section>
     <section class="section" aria-labelledby="safety-rules">
-      <div class="section-head"><div><p class="eyebrow">02 / STAY ALERT</p><h2 id="safety-rules">\${t('homeSafetyTitle')}</h2></div></div>
+      <div class="section-head"><div><p class="eyebrow">02 / STAY ALERT</p><h2 id="safety-rules">${t('homeSafetyTitle')}</h2></div></div>
       <div class="grid grid-3 safety-grid">
-        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">01</span><h3>\${t('rule1Title')}</h3><p>\${t('rule1')}</p></article>
-        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">02</span><h3>\${t('rule2Title')}</h3><p>\${t('rule2')}</p></article>
-        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">03</span><h3>\${t('rule3Title')}</h3><p>\${t('rule3')}</p></article>
+        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">01</span><h3>${t('rule1Title')}</h3><p>${t('rule1')}</p></article>
+        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">02</span><h3>${t('rule2Title')}</h3><p>${t('rule2')}</p></article>
+        <article class="card safety-card"><span class="card-symbol" aria-hidden="true">03</span><h3>${t('rule3Title')}</h3><p>${t('rule3')}</p></article>
       </div>
     </section>
-    <section class="section privacy-banner"><div><p class="eyebrow">\${t('privacyBannerEyebrow')}</p><h2>\${t('privacyTitle')}</h2><p>\${t('privacyDesc')}</p></div><button class="button button-secondary" data-page="privacy">\${t('privacyBannerAction')} <span aria-hidden="true">→</span></button></section>
-    <section class="section notice"><strong>\${t('homeNoteTitle')}</strong><p>\${t('homeNote')}</p></section>
-    <p class="help-text">\${t('installNote')}</p>\`;
+    <section class="section privacy-banner"><div><p class="eyebrow">BUILT AROUND YOUR PRIVACY</p><h2>${t('privacyTitle')}</h2><p>${t('privacyDesc')}</p></div><button class="button button-secondary" data-page="privacy">Read privacy rules <span aria-hidden="true">→</span></button></section>
+    <section class="section notice"><strong>${t('homeNoteTitle')}</strong><p>${t('homeNote')}</p></section>
+    <p class="help-text">${t('installNote')}</p>`;
 }
 function renderMessage() {
-  return \`\${pageHeading('messageEyebrow','messageTitle','messageLead')}
+  return `${pageHeading('messageEyebrow','messageTitle','messageLead')}
     <section class="form-card tool-form-card">
-      <div class="tool-label"><span class="card-symbol" aria-hidden="true">▤</span><div><strong>\${t('messageLocalTitle')}</strong><p>\${t('messageLocalLead')}</p></div><span class="local-pill">LOCAL</span></div>
-      <label class="field-label" for="message-input">\${t('messageLabel')}</label>
-      <textarea id="message-input" maxlength="10000" placeholder="\${t('messagePlaceholder')}" autocomplete="off" autocapitalize="off" spellcheck="true" aria-describedby="message-help message-count"></textarea>
-      <div class="input-meta"><p id="message-help" class="help-text">\${t('messageHelp')}</p><span id="message-count" class="character-count" aria-live="polite">0 / 10000</span></div>
-      <div class="form-actions"><button class="button" data-action="scan-message"><span aria-hidden="true">⌕</span> \${t('scanButton')}</button><button class="button button-secondary" data-action="load-example">\${t('exampleButton')}</button><button class="button button-secondary" data-action="clear-message">\${t('clearButton')}</button></div>
+      <div class="tool-label"><span class="card-symbol" aria-hidden="true">▤</span><div><strong>Private, on-device check</strong><p>No message is uploaded by this checker.</p></div><span class="local-pill">LOCAL</span></div>
+      <label class="field-label" for="message-input">${t('messageLabel')}</label>
+      <textarea id="message-input" maxlength="10000" placeholder="${t('messagePlaceholder')}" autocomplete="off" autocapitalize="off" spellcheck="true" aria-describedby="message-help message-count"></textarea>
+      <div class="input-meta"><p id="message-help" class="help-text">${t('messageHelp')}</p><span id="message-count" class="character-count" aria-live="polite">0 / 10000</span></div>
+      <div class="form-actions"><button class="button" data-action="scan-message"><span aria-hidden="true">⌕</span> ${t('scanButton')}</button><button class="button button-secondary" data-action="load-example">${t('exampleButton')}</button><button class="button button-secondary" data-action="clear-message">${t('clearButton')}</button></div>
       <div id="message-result" aria-live="polite"></div>
     </section>
-    <section class="section notice"><strong>Remember</strong><p>\${t('actionLow')}</p></section>\`;
+    <section class="section notice"><strong>Remember</strong><p>${t('actionLow')}</p></section>`;
 }
 function renderLink() {
-  return \`\${pageHeading('urlEyebrow','urlTitle','urlLead')}
+  return `${pageHeading('urlEyebrow','urlTitle','urlLead')}
     <section class="form-card tool-form-card">
-      <div class="tool-label"><span class="card-symbol" aria-hidden="true">↗</span><div><strong>\${t('linkLocalTitle')}</strong><p>\${t('linkLocalLead')}</p></div><span class="local-pill">LOCAL</span></div>
-      <label class="field-label" for="url-input">\${t('urlLabel')}</label>
-      <input id="url-input" type="text" inputmode="url" maxlength="2048" placeholder="\${t('urlPlaceholder')}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="url-help">
-      <p id="url-help" class="help-text">\${t('urlHelp')}</p>
-      <div class="url-tips"><strong>\${t('linkTipsTitle')}</strong><span>\${t('linkTipSpelling')}</span><span>\${t('linkTipHyphens')}</span><span>\${t('linkTipShorteners')}</span></div>
-      <div class="form-actions"><button class="button" data-action="scan-link"><span aria-hidden="true">⌕</span> \${t('checkLinkButton')}</button><button class="button button-secondary" data-action="clear-link">\${t('clearLinkButton')}</button></div>
+      <div class="tool-label"><span class="card-symbol" aria-hidden="true">↗</span><div><strong>Inspect the text of a URL</strong><p>The address is analysed locally and is not opened.</p></div><span class="local-pill">LOCAL</span></div>
+      <label class="field-label" for="url-input">${t('urlLabel')}</label>
+      <input id="url-input" type="text" inputmode="url" maxlength="2048" placeholder="${t('urlPlaceholder')}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="url-help">
+      <p id="url-help" class="help-text">${t('urlHelp')}</p>
+      <div class="url-tips"><strong>Quick checks</strong><span>Look-alike spelling</span><span>Unexpected hyphens</span><span>Shortened URLs</span></div>
+      <div class="form-actions"><button class="button" data-action="scan-link"><span aria-hidden="true">⌕</span> ${t('checkLinkButton')}</button><button class="button button-secondary" data-action="clear-link">${t('clearLinkButton')}</button></div>
       <div id="link-result" aria-live="polite"></div>
     </section>
-    <section class="section notice"><strong>Important</strong><p>\${t('urlAction')}</p></section>\`;
+    <section class="section notice"><strong>Important</strong><p>${t('urlAction')}</p></section>`;
 }
 function helpContent() {
-  const opts = \`<div class="choice-grid help-choice-grid">
-    <button class="choice" data-help-type="general"><span class="choice-icon">!</span>\${t('chooseMessage')}<small>\${t('chooseMessageDesc')}</small></button>
-    <button class="choice" data-help-type="paid"><span class="choice-icon">₹</span>\${t('choosePaid')}<small>\${t('choosePaidDesc')}</small></button>
-    <button class="choice" data-help-type="control"><span class="choice-icon">▣</span>\${t('chooseControl')}<small>\${t('chooseControlDesc')}</small></button>
-    <button class="choice" data-help-type="shared"><span class="choice-icon">⌑</span>\${t('chooseInfo')}<small>\${t('chooseInfoDesc')}</small></button>
-  </div>\`;
+  const opts = `<div class="choice-grid help-choice-grid">
+    <button class="choice" data-help-type="general"><span class="choice-icon">!</span>${t('chooseMessage')}<small>${t('chooseMessageDesc')}</small></button>
+    <button class="choice" data-help-type="paid"><span class="choice-icon">₹</span>${t('choosePaid')}<small>${t('choosePaidDesc')}</small></button>
+    <button class="choice" data-help-type="control"><span class="choice-icon">▣</span>${t('chooseControl')}<small>${t('chooseControlDesc')}</small></button>
+    <button class="choice" data-help-type="shared"><span class="choice-icon">⌑</span>${t('chooseInfo')}<small>${t('chooseInfoDesc')}</small></button>
+  </div>`;
   const sets = {
     paid: ['paidTitle','paidLead',[['paid1Title','paid1'],['paid2Title','paid2'],['paid3Title','paid3'],['paid4Title','paid4']]],
     control: ['callTitle',null,[['call1Title','call1'],['call2Title','call2'],['call3Title','call3']]],
@@ -318,35 +180,35 @@ function helpContent() {
     general: ['generalTitle',null,[['general1Title','general1'],['general2Title','general2'],['general3Title','general3']]]
   };
   const s = sets[helpType] || sets.general;
-  const steps = \`<section class="section"><div class="section-head"><div><p class="eyebrow">\${lang==='ta'?'அடுத்த படிகள்':lang==='hi'?'अगले कदम':'NEXT STEPS'}</p><h2>\${t(s[0])}</h2>\${s[1]?\`<p>\${t(s[1])}</p>\`:''}</div></div><div class="steps">\${s[2].map(([title,desc])=>\`<article class="step"><strong>\${t(title)}</strong><p>\${t(desc)}</p></article>\`).join('')}</div></section>\`;
-  return \`\${pageHeading('helpEyebrow','helpTitle','helpLead')}
-    <section class="emergency-banner"><span class="emergency-icon" aria-hidden="true">1930</span><div><strong>\${t('helpEmergencyTitle')}</strong><p>Call 1930 as soon as possible and contact your bank or payment app immediately.</p></div><a class="button button-danger" href="tel:1930">Call 1930</a></section>
-    <section class="section"><div class="section-head"><div><p class="eyebrow">CHOOSE YOUR SITUATION</p><h2>\${t('helpChooseTitle')}</h2><p>\${t('helpChooseLead')}</p></div></div>\${opts}</section>
-    \${steps}
-    <section class="section card official-help-card"><p class="eyebrow">\${t('officialSupport')}</p><h2>\${t('officialHelpTitle')}</h2><div class="official-link-row"><a class="official-link" href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener noreferrer"><span class="card-symbol">↗</span><span><strong>\${t('reportOnline')}</strong><small>cybercrime.gov.in</small></span><span>→</span></a><a class="official-link" href="https://cybercrime.gov.in/Webform/cyber_suspect.aspx" target="_blank" rel="noopener noreferrer"><span class="card-symbol">⌕</span><span><strong>\${t('reportSuspect')}</strong><small>\${t('suspiciousIdentifiersDesc')}</small></span><span>→</span></a></div><p class="help-text">\${t('helpDisclaimer')}</p></section>\`;
+  const steps = `<section class="section"><div class="section-head"><div><p class="eyebrow">${lang==='ta'?'அடுத்த படிகள்':lang==='hi'?'अगले कदम':'NEXT STEPS'}</p><h2>${t(s[0])}</h2>${s[1]?`<p>${t(s[1])}</p>`:''}</div></div><div class="steps">${s[2].map(([title,desc])=>`<article class="step"><strong>${t(title)}</strong><p>${t(desc)}</p></article>`).join('')}</div></section>`;
+  return `${pageHeading('helpEyebrow','helpTitle','helpLead')}
+    <section class="emergency-banner"><span class="emergency-icon" aria-hidden="true">1930</span><div><strong>Financial cyber fraud in India?</strong><p>Call 1930 as soon as possible and contact your bank or payment app immediately.</p></div><a class="button button-danger" href="tel:1930">Call 1930</a></section>
+    <section class="section"><div class="section-head"><div><p class="eyebrow">CHOOSE YOUR SITUATION</p><h2>Find the next safe step</h2><p>You can change your selection at any time.</p></div></div>${opts}</section>
+    ${steps}
+    <section class="section card official-help-card"><p class="eyebrow">OFFICIAL SUPPORT</p><h2>${t('officialHelpTitle')}</h2><div class="official-link-row"><a class="official-link" href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener noreferrer"><span class="card-symbol">↗</span><span><strong>${t('reportOnline')}</strong><small>cybercrime.gov.in</small></span><span>→</span></a><a class="official-link" href="https://cybercrime.gov.in/Webform/cyber_suspect.aspx" target="_blank" rel="noopener noreferrer"><span class="card-symbol">⌕</span><span><strong>${t('reportSuspect')}</strong><small>Report suspicious identifiers</small></span><span>→</span></a></div><p class="help-text">${t('helpDisclaimer')}</p></section>`;
 }
 function renderLearn() {
   const done = quizIndex >= QUESTIONS.length;
-  if (done) return \`\${pageHeading('learnEyebrow','quizDone','learnLead')}<section class="form-card quiz-complete"><div class="completion-icon" aria-hidden="true">✓</div><h2>\${t('quizScore')}: \${quizScore} / \${QUESTIONS.length}</h2><p>\${quizScore===QUESTIONS.length?(lang==='ta'?'அருமை! பாதுகாப்பான தேர்வுகள்.':lang==='hi'?'बहुत बढ़िया! सुरक्षित चुनाव।':'Great work. You chose the safer options.'):(lang==='ta'?'விதிகளை மறுபடியும் படித்து மீண்டும் முயற்சிக்கவும்.':lang==='hi'?'नियम फिर पढ़ें और दोबारा कोशिश करें।':'Review the rules and try again.')}</p><button class="button" data-action="quiz-restart">\${t('quizRestart')}</button></section>\`;
+  if (done) return `${pageHeading('learnEyebrow','quizDone','learnLead')}<section class="form-card quiz-complete"><div class="completion-icon" aria-hidden="true">✓</div><h2>${t('quizScore')}: ${quizScore} / ${QUESTIONS.length}</h2><p>${quizScore===QUESTIONS.length?(lang==='ta'?'அருமை! பாதுகாப்பான தேர்வுகள்.':lang==='hi'?'बहुत बढ़िया! सुरक्षित चुनाव।':'Great work. You chose the safer options.'):(lang==='ta'?'விதிகளை மறுபடியும் படித்து மீண்டும் முயற்சிக்கவும்.':lang==='hi'?'नियम फिर पढ़ें और दोबारा कोशिश करें।':'Review the rules and try again.')}</p><button class="button" data-action="quiz-restart">${t('quizRestart')}</button></section>`;
   const q = QUESTIONS[quizIndex];
   const progress = Math.round(((quizIndex + (quizAnswered ? 1 : 0)) / QUESTIONS.length) * 100);
-  return \`\${pageHeading('learnEyebrow','learnTitle','learnLead')}
-    <section class="learning-banner"><div><p class="eyebrow">\${t('learningBannerEyebrow')}</p><h2>\${t('learningBannerTitle')}</h2><p>Practice how to respond to common scam attempts. Your answers stay in this session.</p></div><div class="learning-badge" aria-hidden="true">✓</div></section>
+  return `${pageHeading('learnEyebrow','learnTitle','learnLead')}
+    <section class="learning-banner"><div><p class="eyebrow">SMALL STEPS. BIG PROTECTION.</p><h2>Be aware. Be safe.</h2><p>Practice how to respond to common scam attempts. Your answers stay in this session.</p></div><div class="learning-badge" aria-hidden="true">✓</div></section>
     <section class="section form-card quiz-card">
-      <div class="quiz-progress-head"><span class="eyebrow">\${t('quizQuestion')} \${quizIndex+1} / \${QUESTIONS.length}</span><strong>\${progress}%</strong></div>
-      <div class="progress-track" role="progressbar" aria-label="\${t('quizProgress')}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="\${progress}"><span class="progress-fill progress-\${progress}"></span></div>
-      <h2>\${t(q.q)}</h2>
-      <div id="quiz-options">\${q.a.map((key, i)=>\`<button class="quiz-option" data-action="quiz-answer" data-answer="\${i}" \${quizAnswered?'disabled':''}>\${t(key)}<span aria-hidden="true">→</span></button>\`).join('')}</div>
-      \${quizAnswered?\`<div class="quiz-feedback" role="status"><strong>\${lang==='ta'?'விளக்கம்':lang==='hi'?'समझें':'Why this matters'}:</strong> \${t(q.why)}<p>\${t('quizScore')}: \${quizScore} / \${quizIndex+1}</p><button class="button" data-action="quiz-next">\${quizIndex===QUESTIONS.length-1?t('quizDone'):t('quizNext')} →</button></div>\`:''}
-    </section>\`;
+      <div class="quiz-progress-head"><span class="eyebrow">${t('quizQuestion')} ${quizIndex+1} / ${QUESTIONS.length}</span><strong>${progress}%</strong></div>
+      <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><span class="progress-fill progress-${progress}"></span></div>
+      <h2>${t(q.q)}</h2>
+      <div id="quiz-options">${q.a.map((key, i)=>`<button class="quiz-option" data-action="quiz-answer" data-answer="${i}" ${quizAnswered?'disabled':''}>${t(key)}<span aria-hidden="true">→</span></button>`).join('')}</div>
+      ${quizAnswered?`<div class="quiz-feedback" role="status"><strong>${lang==='ta'?'விளக்கம்':lang==='hi'?'समझें':'Why this matters'}:</strong> ${t(q.why)}<p>${t('quizScore')}: ${quizScore} / ${quizIndex+1}</p><button class="button" data-action="quiz-next">${quizIndex===QUESTIONS.length-1?t('quizDone'):t('quizNext')} →</button></div>`:''}
+    </section>`;
 }
 function renderPrivacy() {
   const rows = [['policyLocalTitle','policyLocal'],['policyNoAI','policyNoAIText'],['policyStorage','policyStorageText'],['policyNoPermTitle','policyNoPerm'],['policyNoGuaranteeTitle','policyNoGuarantee'],['policyNextTitle','policyNext']];
-  return \`\${pageHeading('privacyEyebrow','privacyHeading','privacyLead')}
-    <section class="privacy-intro"><span class="privacy-shield" aria-hidden="true">✓</span><div><h2>\${t('privacyIntroTitle')}</h2><p>Suraksha Setu is a front-end prototype. Checked text is processed in your browser and is not sent to a server by the checker.</p></div></section>
-    <section class="section card privacy-policy-card">\${rows.map(([h,p])=>\`<div class="policy-row"><strong>\${t(h)}</strong><p>\${t(p)}</p></div>\`).join('')}</section>
-    <section class="section card"><p class="eyebrow">OFFICIAL DESTINATIONS</p><h2>\${t('reportTitle')}</h2><p><a href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener noreferrer">\${t('cyberPortal')} ↗</a></p><p><a href="https://sancharsaathi.gov.in/" target="_blank" rel="noopener noreferrer">\${t('chakshu')} ↗</a></p><p class="help-text">\${t('officialNote')}</p></section>
-    <section class="section notice"><strong>\${t('privacyPreLaunchTitle')}</strong><p>This prototype still needs independent security review, translated user testing, and a published vulnerability-reporting contact.</p></section>\`;
+  return `${pageHeading('privacyEyebrow','privacyHeading','privacyLead')}
+    <section class="privacy-intro"><span class="privacy-shield" aria-hidden="true">✓</span><div><h2>Privacy by design</h2><p>Suraksha Setu is a front-end prototype. Checked text is processed in your browser and is not sent to a server by the checker.</p></div></section>
+    <section class="section card privacy-policy-card">${rows.map(([h,p])=>`<div class="policy-row"><strong>${t(h)}</strong><p>${t(p)}</p></div>`).join('')}</section>
+    <section class="section card"><p class="eyebrow">OFFICIAL DESTINATIONS</p><h2>${t('reportTitle')}</h2><p><a href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener noreferrer">${t('cyberPortal')} ↗</a></p><p><a href="https://sancharsaathi.gov.in/" target="_blank" rel="noopener noreferrer">${t('chakshu')} ↗</a></p><p class="help-text">${t('officialNote')}</p></section>
+    <section class="section notice"><strong>Before public launch</strong><p>This prototype still needs independent security review, translated user testing, and a published vulnerability-reporting contact.</p></section>`;
 }
 function render() {
   document.documentElement.lang = lang;
@@ -363,12 +225,12 @@ function render() {
 }
 function renderHelp() { return helpContent(); }
 function renderQrSafety() {
-  return \`<section class="page-heading"><p class="eyebrow">\${t('qrTitleEyebrow')}</p><h1>\${t('qrTitle')}</h1><p>QR codes can open fake websites or lead to unexpected payment requests. This version cannot decode QR images or use your camera; use these checks before approving a payment.</p></section>
-    <section class="form-card qr-guide"><div class="qr-guide-icon" aria-hidden="true">▦</div><h2>\${t('qrBeforeTitle')}</h2>
-      <div class="qr-rule-list"><article><span>01</span><div><strong>\${t('qrR1Title')}</strong><p>Be cautious if a sticker appears to cover another code or looks tampered with.</p></div></article><article><span>02</span><div><strong>\${t('qrR2Title')}</strong><p>Preview the recipient name and amount inside your UPI app before approving.</p></div></article><article><span>03</span><div><strong>\${t('qrR3Title')}</strong><p>Your UPI PIN authorises a payment. Do not enter it to receive a refund or incoming money.</p></div></article><article><span>04</span><div><strong>\${t('qrR4Title')}</strong><p>Cancel if the displayed recipient or amount is unexpected.</p></div></article></div>
+  return `<section class="page-heading"><p class="eyebrow">QR CODE SAFETY</p><h1>Pause before you scan or pay.</h1><p>QR codes can open fake websites or lead to unexpected payment requests. This version cannot decode QR images or use your camera; use these checks before approving a payment.</p></section>
+    <section class="form-card qr-guide"><div class="qr-guide-icon" aria-hidden="true">▦</div><h2>Before scanning a QR code</h2>
+      <div class="qr-rule-list"><article><span>01</span><div><strong>Inspect the QR label</strong><p>Be cautious if a sticker appears to cover another code or looks tampered with.</p></div></article><article><span>02</span><div><strong>Check who gets paid</strong><p>Preview the recipient name and amount inside your UPI app before approving.</p></div></article><article><span>03</span><div><strong>Never use a PIN to receive money</strong><p>Your UPI PIN authorises a payment. Do not enter it to receive a refund or incoming money.</p></div></article><article><span>04</span><div><strong>Stop if details do not match</strong><p>Cancel if the displayed recipient or amount is unexpected.</p></div></article></div>
       <div class="form-actions"><button class="button" data-page="link">Check destination URL →</button><button class="button button-secondary" data-page="help">Get help</button></div>
     </section>
-    <section class="section notice"><strong>\${t('qrLimitTitle')}</strong><p>This page is a guidance checklist, not an image scanner. The URL checker only applies limited local patterns and cannot verify a recipient or guarantee that a site is safe.</p></section>\`;
+    <section class="section notice"><strong>Important limitation</strong><p>This page is a guidance checklist, not an image scanner. The URL checker only applies limited local patterns and cannot verify a recipient or guarantee that a site is safe.</p></section>`;
 }
 function scanMessage(text) {
   const found = MESSAGE_RULES.filter((r) => r.re.test(text));
