@@ -461,3 +461,10 @@ textarea:focus, input[type=text]:focus, input[type=url]:focus, .language-control
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* UPI payload inspector: compact, readable payment details */
+.upi-details{display:grid;grid-template-columns:minmax(105px,.38fr) minmax(0,1fr);gap:8px 16px;margin:14px 0 22px}
+.upi-details dt{font-size:13px;color:var(--muted);font-weight:700}
+.upi-details dd{margin:0;min-width:0;overflow-wrap:anywhere;font-weight:650}
+#upi-input{min-height:130px}
+@media(max-width:480px){.upi-details{grid-template-columns:1fr;gap:3px}.upi-details dd{margin-bottom:9px}}
