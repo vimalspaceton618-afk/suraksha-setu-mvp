@@ -333,3 +333,7 @@ textarea:focus,input:focus{border-color:#16885d}
  .site-footer{padding:18px 16px 24px}
 }
 @media(min-width:761px) and (max-width:980px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-modern{grid-template-columns:1fr .7fr}}
+
+/* Keep the privacy policy reachable without crowding primary navigation. */
+.footer-link { border: 0; padding: 0; color: var(--brand); background: transparent; text-decoration: underline; text-underline-offset: 3px; font-weight: 700; cursor: pointer; }
+.footer-link:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
