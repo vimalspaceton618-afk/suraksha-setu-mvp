@@ -39,7 +39,7 @@ test('API enforces input boundaries and never echoes submitted text', async (t) 
   baseUrl = `http://127.0.0.1:${port}`;
   child = spawn(process.execPath, ['server.js'], {
     cwd: apiDir,
-    env: { ...process.env, PORT: String(port), ALLOWED_ORIGINS: '' },
+    env: { ...process.env, PORT: String(port), ALLOWED_ORIGINS: '', ENABLE_REMOTE_CHECKS: 'true' },
     stdio: ['ignore', 'ignore', 'pipe']
   });
   let stderr = '';
@@ -61,7 +61,8 @@ test('API enforces input boundaries and never echoes submitted text', async (t) 
     assert.deepEqual(await response.json(), {
       status: 'ok',
       mode: 'deterministic-only',
-      aiEnabled: false
+      aiEnabled: false,
+      remoteChecksEnabled: true
     });
     assert.equal(response.headers.get('cache-control'), 'no-store');
     assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
@@ -127,4 +128,40 @@ test('API enforces input boundaries and never echoes submitted text', async (t) 
     const response = await fetch(`${baseUrl}/unknown`);
     assert.equal(response.status, 404);
   });
+});
+
+
+test('remote message checks remain disabled unless explicitly enabled', async (t) => {
+  const port = await unusedPort();
+  const url = `http://127.0.0.1:${port}`;
+  const env = { ...process.env, PORT: String(port), ALLOWED_ORIGINS: '' };
+  delete env.ENABLE_REMOTE_CHECKS;
+  const processUnderTest = spawn(process.execPath, ['server.js'], {
+    cwd: apiDir,
+    env,
+    stdio: ['ignore', 'ignore', 'pipe']
+  });
+  t.after(() => {
+    if (processUnderTest && processUnderTest.exitCode === null) processUnderTest.kill('SIGTERM');
+  });
+  const deadline = Date.now() + 8000;
+  let ready = false;
+  while (Date.now() < deadline) {
+    if (processUnderTest.exitCode !== null) throw new Error('API process exited before readiness');
+    try {
+      const response = await fetch(`${url}/health`);
+      if (response.ok) { ready = true; break; }
+    } catch { /* Server is starting. */ }
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  assert.equal(ready, true, 'API did not become ready');
+  const health = await fetch(`${url}/health`).then((response) => response.json());
+  assert.equal(health.remoteChecksEnabled, false);
+  const response = await fetch(`${url}/v1/check`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ text: 'sensitive text which must not be processed by default' })
+  });
+  assert.equal(response.status, 503);
+  assert.equal((await response.json()).error, 'remote_checks_disabled');
 });
