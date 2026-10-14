@@ -1,6 +1,6 @@
 # Suraksha Setu — MVP 0.2
 
-A privacy-first, no-AI prototype for everyday digital safety in India. This is a **working front-end MVP**, not yet a production security product.
+A privacy-first, no-AI product prototype for everyday digital safety in India. The public PWA is live, and a separate API is being staged with remote text checks disabled by default. This is **not yet a production-grade security service**.
 
 ## Included in this MVP
 
@@ -13,7 +13,7 @@ A privacy-first, no-AI prototype for everyday digital safety in India. This is a
 - Four-question, offline practice quiz with visual progress feedback.
 - PWA manifest and versioned service worker cache for app-like installation and offline loading; cache version bumped with the refreshed UI.
 - Strict Content Security Policy and hosting security headers.
-- No account, backend, analytics, ad tracker, generative AI, third-party script, or upload of checked message/link content.
+- No account, analytics, ad tracker, generative AI, third-party script, or upload of checked message/link content from the PWA. A separate API service is deployed for health/integration testing but is not connected to the frontend; remote text processing is disabled by default.
 
 ## Run locally
 
@@ -79,12 +79,12 @@ Deploy the folder as a static site on a host that supports the `_headers` file (
 
 ## Bank-first implementation direction — zero-budget phase
 
-The current hosted app remains a static, local-first PWA. This phase simplifies navigation and documents the security boundary. No paid AI call, account system, or message upload is enabled.
+The current hosted app remains a static, local-first PWA. A separate Render API service is staged for health/integration testing only; its remote text-check route is disabled by default and the frontend is not connected to it. No paid AI call, account system, or message upload is enabled.
 
 ### Intended architecture
 
 - Client: existing static PWA; local message and URL heuristics remain available offline.
-- API (future, separate Render web service): validate requests, apply rate limits, return minimal structured results, and call an AI provider only when explicitly enabled.
+- API (separate Render web service, staged): currently exposes a non-sensitive health endpoint; remote text checks remain disabled until privacy/security review and an explicit rollout decision. If later enabled, validate requests, apply rate limits, and return minimal structured results.
 - AI boundary: provider credentials stay in server-side environment variables; never put keys in browser JavaScript or the repository.
 - Data: do not persist pasted messages or links by default. If a bank pilot needs metrics, collect consented, non-content operational counts with a documented retention period.
 - Operations: separate staging and production, health checks, dependency scanning, security headers, incident contact, and rollback procedure.
@@ -98,7 +98,7 @@ The initial monthly infrastructure and AI budget is **₹0**. The live MVP must 
 1. Interview bank fraud-prevention, customer-support, accessibility, and information-security stakeholders; do not imply bank endorsement.
 2. Test the local-only PWA with 10–15 users across English, Tamil, and Hindi. Native speakers must review translations before public launch.
 3. Agree on pilot scope, data-processing terms, threat model, security review, and success metrics with one prospective institution.
-4. Build a separate API service with request validation, rate limits, privacy-preserving logs, and tests; keep the static app functional if the API is unavailable.
+4. Validate the staged API service and review platform-level logs, abuse controls, privacy terms, and rate limits; keep the static app functional if the API is unavailable. Do not enable remote text processing until users can make an explicit informed choice and the privacy/security review is approved.
 5. Add AI explanations only after budget, privacy, model quality, and incident-handling gates are approved.
 
 ### Proposed pilot measures
