@@ -197,16 +197,45 @@ function renderPrivacy() {
 }
 function render() {
   document.documentElement.lang = lang;
-  document.title = `Suraksha Setu — ${({home:t('navHome'),message:t('navMessage'),link:t('navLink'),qr:'QR safety',help:t('navHelp'),learn:t('navLearn'),privacy:t('navPrivacy')})[page] || t('tagline')}`;
+  document.title = `Suraksha Setu — ${({home:t('navHome'),message:t('navMessage'),link:t('navLink'),qr:'QR safety',help:t('navHelp'),learn:t('navLearn'),privacy:t('navPrivacy'),learn3d:'Learn with 3D'})[page] || t('tagline')}`;
   document.querySelectorAll('[data-i18n]').forEach((el) => { const key = el.getAttribute('data-i18n'); el.textContent = t(key); });
   document.querySelectorAll('.nav-item').forEach((el) => {
     const active = el.dataset.page === page;
     el.classList.toggle('is-active', active);
     if (active) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current');
   });
-  const views = {home:renderHome, message:renderMessage, link:renderLink, qr:renderQrSafety, help:renderHelp, learn:renderLearn, privacy:renderPrivacy};
+  const views = {home:renderHome, message:renderMessage, link:renderLink, qr:renderQrSafety, help:renderHelp, learn:renderLearn, learn3d:renderLearn3D, privacy:renderPrivacy};
   app.innerHTML = (views[page] || renderHome)();
   if (page === 'help') document.querySelectorAll('[data-help-type]').forEach((el) => el.classList.toggle('is-selected', el.dataset.helpType === helpType));
+}
+const LESSONS_3D = [
+ {id:'message',name:'Spot the scam message',tag:'MESSAGE SAFETY',title:'Urgency is a warning sign — not proof.',body:'This fictional message tries to rush you into tapping a link and sharing an OTP. Select a clue to understand why it deserves a pause.',clues:[['Urgency','“Your account closes in 5 minutes” pressures you to act before checking.'],['Secret request','A legitimate support team should not ask you to disclose your OTP or UPI PIN.'],['Unexpected link','Do not use a link from a surprising message to verify its claim. Open the official app yourself.']],takeaway:'Pause. Never share an OTP or PIN. Verify independently.'},
+ {id:'link',name:'Look closely at a link',tag:'LINK SAFETY',title:'A familiar logo cannot prove a site is genuine.',body:'Explore a fictional browser card and inspect the displayed address. The illustration teaches URL concepts; it does not visit or verify a real website.',clues:[['Look at the hostname','Read the actual domain from right to left, before the path.'],['Watch for look-alikes','Extra words, misspellings and misleading subdomains can make an address look familiar.'],['HTTPS is not proof','Encryption does not prove that the website belongs to the organisation it names.']],takeaway:'Check the exact address. Verify through an official channel you find yourself.'},
+ {id:'upi',name:'Understand a UPI request',tag:'PAYMENT SAFETY',title:'Receiving money does not require your UPI PIN.',body:'Follow this fictional payment flow. A request to collect money is different from a payment you choose to authorise.',clues:[['Check the recipient','Read the recipient name and payment details shown in your payment app.'],['Check the amount','Do not approve an unexpected collect request or payment under pressure.'],['Protect your PIN','A UPI PIN authorises a payment. Never share it with another person.']],takeaway:'Check recipient and amount before authorising. Never share your UPI PIN.'},
+ {id:'otp',name:'Protect your OTP',tag:'ACCOUNT SAFETY',title:'Treat one-time codes like a private key.',body:'This simplified simulation shows how a code can protect access or authorise an action. Never enter a real code in a learning activity.',clues:[['Keep it private','Do not disclose one-time codes to an unexpected caller or message sender.'],['Stop the pressure','Urgency and threats are reasons to pause and verify independently.'],['If exposed, act','Secure the affected account from a trusted device and contact the provider.']],takeaway:'Never share verification codes with someone who contacts you.'}
+];
+let activeLesson3D='message';
+let activeClue3D=0;
+function renderLearn3D() {
+ const lesson=LESSONS_3D.find(x=>x.id===activeLesson3D)||LESSONS_3D[0];
+ const clue=lesson.clues[activeClue3D]||lesson.clues[0];
+ return `${pageHeading('LEARN BY SEEING','Learn with 3D','Explore a safe simulation, discover the warning signs, and practise a safer next step. These scenes are educational examples—not live security scans.')}
+ <section class="learn3d-layout">
+  <aside class="learn3d-lessons" aria-label="Learning scenarios"><p class="eyebrow">SCENARIO LIBRARY</p><h2>Choose a lesson</h2>${LESSONS_3D.map(l=>`<button class="learn3d-lesson ${l.id===lesson.id?'is-selected':''}" data-action="lesson3d-select" data-lesson="${l.id}"><span class="lesson-num">${String(LESSONS_3D.indexOf(l)+1).padStart(2,'0')}</span><span><strong>${l.name}</strong><small>${l.tag}</small></span><span aria-hidden="true">→</span></button>`).join('')}<div class="learn3d-privacy"><span aria-hidden="true">◈</span><strong>Private by design</strong><p>Scene interactions run locally. No message, code, or payment data is requested.</p></div></aside>
+  <section class="learn3d-main" aria-label="Interactive safety lesson">
+   <div class="learn3d-canvas-head"><div><p class="eyebrow">INTERACTIVE SIMULATION</p><strong>${lesson.name}</strong></div><span class="simulation-pill"><i></i> Training example</span></div>
+   <div class="learn3d-scene scene-${lesson.id}" id="lesson3d-scene">
+    <div class="scene-grid" aria-hidden="true"></div><div class="scene-orbit orbit-one" aria-hidden="true"></div><div class="scene-orbit orbit-two" aria-hidden="true"></div>
+    <div class="scene-object-wrap"><div class="scene-object" aria-label="Illustrative 3D smartphone"><div class="phone-frame"><div class="phone-speaker"></div><div class="phone-screen"><div class="phone-status"><span>9:41</span><span>● ● ▰</span></div><div class="phone-appbar"><span class="app-avatar">S</span><span><b>${lesson.id==='upi'?'Payment request':lesson.id==='link'?'Browser preview':lesson.id==='otp'?'Verification':'Bank alert'}</b><small>Illustrative example</small></span></div>${lesson.id==='link'?'<div class="fake-address">https://secure-example.invalid</div><div class="fake-browser"><span class="browser-logo">S</span><b>Account verification</b><p>Review this fictional page address before proceeding.</p></div>':lesson.id==='upi'?'<div class="payment-card"><span>PAYMENT REQUEST</span><b>₹2,500.00</b><small>Example recipient</small><div class="payment-arrow">↓</div><strong>Review before paying</strong></div>':lesson.id==='otp'?'<div class="otp-card"><span>ONE-TIME CODE</span><b>•• •• ••</b><p>Never share a real code with a caller.</p></div>':'<div class="message-card"><span class="message-chip">URGENT</span><p>Your account will close in 5 minutes. Tap the link and share your OTP.</p><div class="fake-link">secure-example.invalid</div></div>'}<div class="phone-bottom"></div></div></div></div>
+    <button class="scene-hotspot hotspot-one ${activeClue3D===0?'hotspot-active':''}" data-action="lesson3d-clue" data-clue="0" aria-label="Explore first warning sign">1</button><button class="scene-hotspot hotspot-two ${activeClue3D===1?'hotspot-active':''}" data-action="lesson3d-clue" data-clue="1" aria-label="Explore second warning sign">2</button><button class="scene-hotspot hotspot-three ${activeClue3D===2?'hotspot-active':''}" data-action="lesson3d-clue" data-clue="2" aria-label="Explore third warning sign">3</button>
+    <div class="scene-caption"><span>SELECT A NUMBER</span><strong>Explore the clues around the phone</strong></div>
+   </div>
+   <div class="learn3d-viewbar"><span><i class="view-dot"></i> Interactive visual model</span><button class="button button-secondary" data-action="lesson3d-reset">Reset scene</button><span class="view-note">Decorative 3D-style illustration · no real scan</span></div>
+   <div class="learn3d-explanation"><div class="clue-number">0${activeClue3D+1}</div><div class="clue-copy"><p class="eyebrow">WHY THIS MATTERS</p><h3>${clue[0]}</h3><p>${clue[1]}</p></div><div class="clue-nav">${lesson.clues.map((c,i)=>`<button class="clue-dot ${i===activeClue3D?'is-active':''}" data-action="lesson3d-clue" data-clue="${i}" aria-label="Show clue ${i+1}" aria-pressed="${i===activeClue3D}">${i+1}</button>`).join('')}</div></div>
+   <div class="learn3d-takeaway"><span class="takeaway-shield">✓</span><div><p class="eyebrow">REMEMBER THIS</p><strong>${lesson.takeaway}</strong></div></div>
+   <div class="learn3d-footer"><span>Lesson ${LESSONS_3D.indexOf(lesson)+1} of ${LESSONS_3D.length}</span><button class="button" data-action="lesson3d-next">${activeClue3D<2?'Next clue':'Next lesson'} <span aria-hidden="true">→</span></button></div>
+  </section>
+ </section>`;
 }
 function renderHelp() { return helpContent(); }
 function inspectUpiIntent(raw) {
@@ -356,6 +385,10 @@ document.addEventListener('click', (event) => {
   const actionButton = event.target.closest('[data-action]');
   if (!actionButton) return;
   const action = actionButton.dataset.action;
+  if (action === 'lesson3d-select') { activeLesson3D = actionButton.dataset.lesson; activeClue3D = 0; render(); return; }
+  if (action === 'lesson3d-clue') { activeClue3D = Number(actionButton.dataset.clue)||0; render(); return; }
+  if (action === 'lesson3d-reset') { activeClue3D = 0; render(); return; }
+  if (action === 'lesson3d-next') { if (activeClue3D < 2) activeClue3D++; else { const i=LESSONS_3D.findIndex(x=>x.id===activeLesson3D); activeLesson3D=LESSONS_3D[(i+1)%LESSONS_3D.length].id; activeClue3D=0; } render(); return; }
   if (action === 'scan-message') {
     const text = document.getElementById('message-input').value;
     const out = document.getElementById('message-result');
