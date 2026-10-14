@@ -6,6 +6,8 @@ const PORT = Number.parseInt(process.env.PORT || '10000', 10);
 const MAX_BODY_BYTES = 10 * 1024;
 const RATE_WINDOW_MS = 60_000;
 const RATE_LIMIT = 30;
+// Remote text processing is opt-in; production remains closed until a privacy review approves it.
+const REMOTE_CHECKS_ENABLED = process.env.ENABLE_REMOTE_CHECKS === 'true';
 const allowedOrigins = new Set(
   (process.env.ALLOWED_ORIGINS || '')
     .split(',')
@@ -127,11 +129,18 @@ const server = http.createServer(async (req, res) => {
 
   const path = new URL(req.url, 'http://localhost').pathname;
   if (req.method === 'GET' && path === '/health') {
-    return sendJson(res, 200, { status: 'ok', mode: 'deterministic-only', aiEnabled: false }, origin);
+    return sendJson(res, 200, { status: 'ok', mode: 'deterministic-only', aiEnabled: false, remoteChecksEnabled: REMOTE_CHECKS_ENABLED }, origin);
   }
 
   if (req.method !== 'POST' || path !== '/v1/check') {
     return sendJson(res, 404, { error: 'not_found' }, origin);
+  }
+
+  if (!REMOTE_CHECKS_ENABLED) {
+    return sendJson(res, 503, {
+      error: 'remote_checks_disabled',
+      message: 'Remote message checks are disabled. Use the local checker on the website.'
+    }, origin);
   }
 
   if (rateLimited(req)) {
